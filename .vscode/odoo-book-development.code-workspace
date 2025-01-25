@@ -1,0 +1,60 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"editor.wordWrap": "wordWrapColumn",
+		"filewatcher.commands": [
+			{
+				"event": "onFileChange",
+				"match": "\\.rst*",
+				"isAsync": true,
+				"vscodeTask":  ["workbench.action.tasks.runTask", "build-html"]
+			}		
+		]
+	},
+	"extensions": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [],
+		"compounds": []
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "build-html",
+				"type": "shell",
+				"command": "sphinx-build",
+				"args": [
+					"--builder",
+					"html",
+					"./source",
+					"./build"
+				],
+				"isBackground": false,
+				"problemMatcher": [],
+				"options": {
+					"cwd": "${workspaceFolder}"
+				}
+			},{
+				"label": "build-clean",
+				"type": "shell",
+				"command": "sphinx-build",
+				"args": [
+					"-M",
+					"clean",
+					"./source",
+					"./build"
+				],
+				"isBackground": false,
+				"problemMatcher": [],
+				"options": {
+					"cwd": "${workspaceFolder}"
+				}
+			}
+		]
+	}
+}

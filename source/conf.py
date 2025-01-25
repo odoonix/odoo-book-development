@@ -34,22 +34,74 @@ exclude_patterns = []
 language = 'fa'
 
 # -- Options for HTML output -------------------------------------------------
+html_logo = "_static/odoonix-logo.png"
+html_title = "توسعه‌گر اودوو ۱۷"
+
+
+#----------------------------------HTML Theme: book ---------------------------
 # Book them is used in this version. See following link for more inforamtion
 # NOTE: theme is forked into extension path
 # https://sphinx-book-theme.readthedocs.io/
-html_theme = 'sphinx_book_theme'
+#------------------------------------------------------------------------------
+# html_theme = 'sphinx-book-theme'
+# html_theme_path = ['_themes']
+# html_theme_options = {
+#     "repository_url": "https://github.com/odoonix/odoo-book-development",
+#     "use_repository_button": True,
+#     "home_page_in_toc": True,
+#     "show_navbar_depth": 1,
+#     "max_navbar_depth": 2,
+#     "collapse_navbar": True,
+#     "footer_start": ["footer_start.html"],
+#     "footer_end": ["footer_end.html"]
+# }
+# html_static_path = ['_static']
+# html_css_files = ["custom.css"]
+
+
+
+#-------------------------------HTML Theme: Classic ---------------------------
+# NOTE: theme is forked into extension path
+# https://??
+#------------------------------------------------------------------------------
+
+# html_theme = 'classic'
+# html_theme_path = ['_themes']
+
+# html_context = {
+#     'css_files': [
+#         '_static/custom.css',  # برای افزودن استایل سفارشی
+#     ],
+# }
+# html_static_path = ['_static']
+
+
+
+
+#-------------------------------HTML Theme: Classic ---------------------------
+# NOTE: theme is forked into extension path
+# https://??
+#------------------------------------------------------------------------------
+html_theme = 'sphinx_rtd_theme'
 html_theme_path = ['_themes']
 html_theme_options = {
-    "repository_url": "https://github.com/odoonix/odoo-book-development",
-    "use_repository_button": True,
-    "home_page_in_toc": True,
-    "show_navbar_depth": 1,
-    "max_navbar_depth": 2,
-    "collapse_navbar": True,
-    "footer_start": ["footer_start.html"],
-    "footer_end": ["footer_end.html"]
+    'prev_next_buttons_location': 'bottom',
+    'analytics_id': 'G-XXXXXXXXXX',  #  Provided by Google in your dashboard
+    'analytics_anonymize_ip': False,
+    'logo_only': False,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    'vcs_pageview_mode': '',
+    'style_nav_header_background': 'white',
+    'flyout_display': 'hidden',
+    'version_selector': True,
+    'language_selector': True,
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
 }
-html_logo = "_static/odoonix-logo.png"
-html_title = "توسعه‌گر اودوو ۱۷"
 html_static_path = ['_static']
-html_css_files = ["custom.css"]
+html_css_files = ['rtd/custom.css']
