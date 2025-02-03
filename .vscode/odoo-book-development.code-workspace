@@ -13,7 +13,8 @@
 				"isAsync": true,
 				"vscodeTask":  ["workbench.action.tasks.runTask", "build-html"]
 			}		
-		]
+		],
+		"editor.rulers": [88]
 	},
 	"extensions": {},
 	"launch": {
