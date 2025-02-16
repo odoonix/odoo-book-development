@@ -1,2 +1,4 @@
+graphviz
 sphinx
 sphinx-book-theme
+sphinx.ext.graphviz

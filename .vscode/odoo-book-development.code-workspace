@@ -14,12 +14,15 @@
 				"vscodeTask":  ["workbench.action.tasks.runTask", "build-html"]
 			}		
 		],
-		"editor.rulers": [88]
+		"editor.rulers": [88],
+    	"iis.configDir": ""
 	},
 	"extensions": {},
 	"launch": {
 		"version": "0.2.0",
-		"configurations": [],
+		"configurations": [{
+			"id": "Test"
+		}],
 		"compounds": []
 	},
 	"tasks": {
