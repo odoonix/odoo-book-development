@@ -41,10 +41,6 @@
    git
    otoolbox
    vscode
-   vscode-extensions
-   vscode-workspase
    project-repo
-   vscode-launch-run
-   vscode-launch-debug
    
    
