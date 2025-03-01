@@ -15,7 +15,8 @@
 			}		
 		],
 		"editor.rulers": [88],
-    	"iis.configDir": ""
+		"iis.configDir": "",
+		"makefile.configureOnOpen": false
 	},
 	"extensions": {},
 	"launch": {

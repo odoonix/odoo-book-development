@@ -1,11 +1,5 @@
 اجرا و رفع خطا
 =====================
 
+<<در حال توصعه>>
 
-
-otoolbox vscode run
-    --addons a,b,c
-
-
-otoolbox vscode run-remove
-    --addons a,b,c
