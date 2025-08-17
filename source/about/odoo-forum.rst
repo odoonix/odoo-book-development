@@ -17,5 +17,3 @@
 .. image:: images/forum-001.png
     :alt: نمای کلی فروم اودوو.
     :align: center
-
-

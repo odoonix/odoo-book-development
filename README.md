@@ -1,22 +1,35 @@
-# توسعه دهنده اودوو ۱۷
 
-اودوو (Odoo) یک پلت‌فرم جامع توسعه نرم‌افزارهای سازمانی یا ERP (Enterprise Resource Planning) می‌باشد که توانسته محبوبیت زیادی در کسب‌وکارهای مختلف به‌دست‌آورد. این پلت‌فرم با ساختار مدولار خود، امکان توسعه و سفارشی‌سازی انواع نرم‌افزارهای مدیریتی و بهره‌وری برای سازمان‌ها را فراهم می‌کند. با استفاده از اودوو، شرکت‌ها می‌توانند برنامه‌های مختلفی چون مالی، منابع انسانی، تولید، مدیریت موجودی، فروش، بازاریابی و سایر فرایندهای کسب‌وکار خود را یکپارچه کنند.
+<!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
+[![Pre-commit Status](https://github.com/moonsunsoft/TODO, update the description in coper ansere file/actions/workflows/pre-commit.yml/badge.svg?branch=17.0)](https://github.com/moonsunsoft/TODO, update the description in coper ansere file/actions/workflows/pre-commit.yml?query=branch%3A17.0)
+[![Build Status](https://github.com/moonsunsoft/TODO, update the description in coper ansere file/actions/workflows/test.yml/badge.svg?branch=17.0)](https://github.com/moonsunsoft/TODO, update the description in coper ansere file/actions/workflows/test.yml?query=branch%3A17.0)
+[![codecov](https://codecov.io/gh/moonsunsoft/TODO, update the description in coper ansere file/branch/17.0/graph/badge.svg)](https://codecov.io/gh/moonsunsoft/TODO, update the description in coper ansere file)
+<!-- /!\ Non OCA Context : Set here the badge of your translation instance. -->
 
-یکی از اصلی‌ترین ویژگی‌های اودوو، متن‌باز بودن آن است. این ویژگی به توسعه‌دهندگان اجازه می‌دهد تا کدهای برنامه را به‌طور کامل بررسی، و بر اساس نیاز سازمان تغییرات و بهبودهای لازم را اعمال کنند. این امر نه‌تنها هزینه‌های توسعه نرم‌افزار را کاهش می‌دهد بلکه امکان انطباق سریع با تغییرات و نیازهای جدید کسب‌وکار را نیز فراهم می‌کند. هسته‌ی معماری اودوو بر پایه‌ی زبان‌های برنامه‌نویسی پایتون و جاوا اسکریپت بنا شده که از محبوب‌ترین زبان‌های برنامه‌نویسی در جهان محسوب می‌شوند و یادگیری و استفاده از آنها نسبتاً آسان است.
+<!-- /!\ do not modify above this line -->
 
-علاوه‌بر این، اودوو رابط کاربری بسیار مناسبی دارد که استفاده از آن را حتی برای کاربران غیرتخصصی هم راحت می‌سازد. این‌طور می‌توان گفت که اودوو با ابزارهای متعدد و قابلیت‌های گوناگونی که ارائه می‌دهد، نیازهای متنوع سازمان‌ها را از کوچک تا بزرگ را پوشش می‌دهد. اودوو همچنین امکان یکپارچه‌سازی آسان با سایر پلت‌فرم‌ها و سیستم‌های موجود را ایجاد کرده و بدین ترتیب به سازمان‌ها این امکان را می‌دهد که به‌راحتی سیستم‌های قدیمی خود را بدون از دست دادن اطلاعات، به‌روز و نوین کنند.
+# TODO, update the description in coper ansere file
 
-این پروژه به عنوان یک پروژه متن باز برای توسعه یک کتاب جامع ایجاد شده که در آن استفاده و توسعه از این سکوی نرم افزاری را آموزش می‌دهد.
+TODO, update the description in coper ansere file
 
-## چگونه توسعه دهیم
+<!-- /!\ do not modify below this line -->
 
-Sphinx ابزاری قدرتمند و محبوب برای ایجاد مستندات با کیفیت بالا است که ابتدا برای مستندسازی پروژه‌های پایتون ایجاد شد و اکنون توسط طیف گسترده‌ای از پروژه‌های نرم‌افزاری و مستندات دیگر به کار می‌رود. این ابزار قادر است مستندات را در قالب‌های مختلفی همچون HTML، PDF، ePub و LaTeX تولید کند. استفاده از سینتکس ReStructuredText (reST) که بسیار قابل خواندن و ساده است، به نویسندگان اجازه می‌دهد تا مستندات خود را به‌سرعت و به‌آسانی بنویسند. از ویژگی‌های برجسته Sphinx، می‌توان به تولید خودکار فهرست محتویات، جستجو، فهرست نشانه‌های موضوعی و ارجاع درون‌سند اشاره کرد که همه‌ی این‌ها به‌طور خودکار و با پیکربندی مناسب انجام می‌شود. برای پروژه‌هایی که به روزرسانی مداوم و مستندات پویا نیاز دارند، Sphinx ابزاری ایده‌آل محسوب می‌شود.
+<!-- prettier-ignore-start -->
 
-در این پروژه ما نیز ازن این ابزار برای توسعه کتاب استفاده کردیم. از این رو پیش از هر کاری باید روش توسعه مستند با استفاده از این سیستم را یاد بگیرید. سایت این ابزار راهنمای کاملی برای آن ایجاد کرده است. در حال حاضر از نسخه ۸ آن استفاده می‌شود.
+[//]: # (addons)
 
+This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
 
-## منابع 
+[//]: # (end addons)
 
-اصلی ترین منبع،‌که تقریبا ساختار اولیه کتاب بر اساس آن ایجاد شده کتاب زیر است:
+<!-- prettier-ignore-end -->
 
-https://www.cybrosys.com/odoo/odoo-books/odoo-17-development/
+## Licenses
+
+This repository is licensed under [AGPL-3.0](LICENSE).
+
+However, each module can have a totally different license, as long as they adhere to MoonSun PTY LTD
+policy. Consult each module's `__manifest__.py` file, which contains a `license` key
+that explains its license.
+
+----
+<!-- /!\ Non OCA Context : Set here the full description of your organization. -->

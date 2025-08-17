@@ -24,7 +24,3 @@ Visual Studio Code، که معمولاً به اختصار VS Code شناخته 
    vscode/extensions
    vscode/launch-run
    vscode/launch-test
-
-
-   
-   

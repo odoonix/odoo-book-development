@@ -42,5 +42,3 @@
    otoolbox
    vscode
    project-repo
-   
-   

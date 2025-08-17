@@ -1,4 +1,4 @@
 {
-    "makefile.configureOnOpen": false,
-    "editor.wordWrap": "on"
+  "makefile.configureOnOpen": false,
+  "editor.wordWrap": "on"
 }
