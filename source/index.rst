@@ -1,12 +1,12 @@
 .. Odoo book development documentation master file
 
-توسعه‌گر اودوو ۱۷
-============================
+کتاب اودوو: توسعه و برنامه نویسی
+===========================================
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: فهرست مطالب:
 
    introduction
    about/index
@@ -30,3 +30,5 @@
    pos/index
    iot-box/index
    others/index
+
+   appendex/index

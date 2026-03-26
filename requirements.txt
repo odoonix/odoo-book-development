@@ -1,4 +1,16 @@
-graphviz
+
+# Sphonix base requirements
 sphinx
+
+# Sphinx themes
 sphinx-book-theme
-sphinx.ext.graphviz
+pydata_sphinx_theme
+
+# Sphinix graph and chart extensions
+graphviz
+# sphinx.ext.graphviz
+
+
+# Sphinx jquery extensions
+sphinxcontrib.jquery
+
