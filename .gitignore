@@ -61,7 +61,6 @@ coverage.xml
 
 # Visual Studio cache/options directory
 .vs/
-.vscode
 
 # OSX Files
 .DS_Store
