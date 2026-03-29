@@ -7,6 +7,11 @@ body {
   direction: rtl !important;
 }
 
+pre {
+   direction: ltr !important;
+   text-align: left !important;
+}
+
 /* Style all links with a specific subset of versions */
 .version-switcher__container a[data-version="0.2"],
 .version-switcher__container a[data-version="0.3"] {
