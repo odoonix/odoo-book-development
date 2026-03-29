@@ -21,13 +21,13 @@
    internationalization/index
    web-development/index
    website-development/index
-   web-library/index
+   odoo-web-library/index
    test-cases/index
    odoo-sh/index
-   rpc/index
+   remote-procedure-calls-rpc/index
    performance-optimisation/index
    emails/index
-   pos/index
+   point-of-sales/index
    iot-box/index
    others/index
 
