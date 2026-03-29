@@ -1,34 +1,19 @@
+/* custom CSS classes (used in docs/user_guide/extending.rst) NOTE: the begin
+ *  and end markers are necessary for partial file includes! don't remove them.
+ */
+
+/* begin-custom-color/* <your static path>/custom.css */
 body {
-    direction: rtl;
-    unicode-bidi: embed;
+  direction: rtl !important;
 }
 
-/* تنظیمات اضافی برای عناصر مختلف */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-align: right;
+/* Style all links with a specific subset of versions */
+.version-switcher__container a[data-version="0.2"],
+.version-switcher__container a[data-version="0.3"] {
+   background-color: red;
 }
 
-p {
-    text-align: justify;
-}
-
-/* تنظیمات منو و ناوبری */
-.wy-nav-side {
-    right: 0;
-    left: auto;
-}
-
-.wy-nav-content-wrap {
-    margin-right: 300px;
-    margin-left: 0;
-}
-
-pre {
-    direction: ltr !important;
-    text-align: left;
+/* Style all links with `stable` in the version name */
+.version-switcher__container a[data-version-name*="stable"] {
+   background-color: green;
 }

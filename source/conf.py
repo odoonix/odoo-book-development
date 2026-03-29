@@ -14,14 +14,18 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 from sphinx.locale import _
+from sphinx.locale import get_translation
 
 import pydata_sphinx_theme
+
+
+
 
 sys.path.append(str(Path(".").resolve()))
 
 
 project = 'کتاب اودوو: توسعه و برنامه نویسی'
-copyright = '۱۴۰۵, اودوونیکس'
+copyright = 'اودوونیکس ۱۴۰۴'
 author = 'اودوونیکس'
 
 
@@ -67,24 +71,101 @@ html_theme = "pydata_sphinx_theme"
 html_static_path = ['_static']
 html_css_files = [
     'custom.css',
-    'rtl.css'
 ]
+html_js_files = []
 html_context = {
     "rtl": True
 }
+html_show_sourcelink = False
+html_favicon = "_static/logo.png"
 html_theme_options={
-    # "direction":"ltr"
-    # analytics_id = "UA-XXXXX-X"
-    # website = ""
-    # facebook = ""
-    # googleplus = ""
-    # linkedin = ""
-    # twitter = ""
-    # github = ""
-    # gitlab = ""
-    # bitbucket = ""
+    "back_to_top_button": True,
+    "analytics": {
+        "google_analytics_id": "G-KJ64LHCQZP",
+    },
+    # Header
+    "header_links_before_dropdown": 2,
+    "logo": {
+        "text": "کتاب اودوو: توسعه و برنامه نویسی",
+        "alt_text": "کتاب اودوو - توسعه با اودوونیکس",
+        "image_light": "_static/logo-light.png",
+        "image_dark": "_static/logo-dark.png",
+        "link": "https://odoonix.github.io/odoo-book-accounting",
+    },
+
+    # Links
+    "external_links": [
+        {
+            "name": "Moonsun (Golden Odoo Partner)", 
+            "url": "https://moonsun.au"
+        },{
+            "name": "Odoonix (OCA Partner)", 
+            "url": "https://odoonix.com"
+        },
+    ],
+    "icon_links_label": _("Quick Links"),
+    "icon_links": [
+        {
+            "name": _("GitHub"),
+            "url": "https://github.com/odoonix/odoo-book-accounting",
+            "icon": "fab fa-github-square",
+        },
+    ],
+
+
+    # Navigation bar
+    "show_nav_level": 3,
+    "collapse_navigation": True,
+    "navbar_start": [
+        "navbar-logo", 
+    ],
+    "navbar_end": [
+        "version-switcher",
+        "navbar-icon-links.html"
+    ],
+    
+    # Page Table of Contents
+    "show_toc_level": 2,
+
+    # Sidebar items
+    "secondary_sidebar_items": [
+        "page-toc",
+        "sourcelink",
+        # "search-field.html",
+        # "version-switcher"
+    ],
+    "primary_sidebar_end": [
+        "indices.html", 
+        "sidebar-ethical-ads.html",
+        # "search-field.html",
+        # "version-switcher"
+    ],
+
+    # Github integration
+    "use_edit_page_button": True,
+    "check_switcher": False,
+    "switcher": {
+        "json_url": "https://odoonix.github.io/odoo-book-accounting/_static/versions.json",
+        "version_match": "main",
+    },
+
+    # ADS
+    "announcement": """
+    ما را در توسعه و نگداری این کتاب
+    <a href='https://odoonix.com/pages/donate'>
+        حمایت مالی کنید! 
+    </a>
+    """,
+    "show_version_warning_banner": True,
+
+
+    # Search
+    "search_bar_text": _("Search the docs..."),
 }
-
-
-
-
+html_sidebars = {
+    "**": [
+        "search-field.html", 
+        "sidebar-nav-bs.html", 
+        "sidebar-ethical-ads.html"
+    ]
+}
