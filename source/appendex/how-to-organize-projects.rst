@@ -70,12 +70,12 @@
     [submodule "OCA/stock-logistics-warehouse"]
             path = OCA/stock-logistics-warehouse
             url = git@github.com:OCA/stock-logistics-warehouse.git
-            branch = 17.0
+            branch = 18.0
 
     [submodule "OCA/stock-logistics-workflow"]
             path = OCA/stock-logistics-workflow
             url = git@github.com:OCA/stock-logistics-workflow.git
-            branch = 17.0
+            branch = 18.0
 
 
 ساختاری که برای مدیریت ماژولها در نظر گرفته شده به صورت زیر است
