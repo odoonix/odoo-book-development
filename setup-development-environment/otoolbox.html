@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fa" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Odoonix Toolbox &#8212; مستندات کتاب اودوو: توسعه و برنامه نویسی</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b998bf2" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=30788233"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/translations.js?v=5df48d09"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KJ64LHCQZP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-KJ64LHCQZP');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'setup-development-environment/otoolbox';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://odoonix.github.io/odoo-book-accounting/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="فهرست" href="../genindex.html" />
+    <link rel="search" title="جستجو" href="../search.html" />
+    <link rel="next" title="VS Code" href="vscode.html" />
+    <link rel="prev" title="git" href="git.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fa"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">
+    ما را در توسعه و نگداری این کتاب
+    <a href='https://odoonix.com/pages/donate'>
+        حمایت مالی کنید! 
+    </a>
+    </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://odoonix.github.io/odoo-book-accounting">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-light.png" class="logo__image only-light" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+  
+  
+    <p class="title logo__title">کتاب اودوو: توسعه و برنامه نویسی</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../emails/index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../emails/index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docker.html">نصب داکر</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">نصب داکر کامپوز</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PostgreSQL.html">PostgreSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgadmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Odoonix Toolbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-repo.html">project-repo</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items" aria-labelledby="pst-indices-navigation-heading-2">
+  <p id="pst-indices-navigation-heading-2" class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="../genindex.html"
+             accesskey="I">فهرست کلی</a>
+        </li>
+  </ul>
+</nav></div>
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">محیط توسعه و ابزارهای مورد نیاز برای Odoo 18</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Odoonix Toolbox</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="odoonix-toolbox">
+<h1>Odoonix Toolbox<a class="headerlink" href="#odoonix-toolbox" title="Link to this heading">#</a></h1>
+<p>Otoolbox یک ابزار یکپارچه و کارآمد برای توسعه‌دهندگان و مدیران است که فرآیند کلون کردن پروژه‌های مختلف گیت، مدیریت پوشه‌های پروژه و آماده‌سازی تنظیمات خط فرمان برای اجرای محلی Odoo را ساده و بهینه می‌کند. با استفاده از Otoolbox، تمام این عملیات‌ها به صورت خودکار انجام می‌شود، که باعث صرفه‌جویی در زمان و افزایش دقت در مدیریت پروژه‌ها می‌گردد.</p>
+<section id="otoolbox">
+<h2>ویژگی‌های کلیدی Otoolbox<a class="headerlink" href="#otoolbox" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>کلون کردن پروژه‌های مختلف:</strong> با Otoolbox می‌توانید پروژه‌های گیت مختلف را به سرعت کلون کنید و هر پروژه را در پوشه‌ای جداگانه قرار دهید. این ویژگی به شما امکان می‌دهد تا پروژه‌های Odoo خود را به صورت منظم و سازمان‌یافته مدیریت کنید.</p></li>
+<li><p><strong>مدیریت مسیرها و تنظیمات خط فرمان:</strong> Otoolbox به شما کمک می‌کند تا آدرس‌های پروژه‌های کلون شده را به خط فرمان اضافه کنید. این عملیات به شما اجازه می‌دهد تا به راحتی Odoo را به صورت محلی اجرا کنید و نیاز به ورود دستی مسیرها را از بین می‌برد.</p></li>
+<li><p><strong>آماده‌سازی محیط برای تست:</strong> یکی از وظایف حیاتی در توسعه Odoo، اجرای تست‌های جامع برای اطمینان از عملکرد صحیح سیستم است. Otoolbox با ارائه مجموعه‌ای از ابزارهای تست، به شما امکان می‌دهد تا سیستم خود را به صورت کامل و بدون هیچ گونه اشکال تست کنید. این ابزار به شما کمک می‌کند تست‌های خودکار و دستی را به راحتی اجرا کرده و نتایج دقیق را مشاهده کنید.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2>چگونه Otoolbox به شما کمک می‌کند<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Otoolbox یک ابزار قدرتمند و یکپارچه است که به توسعه‌دهندگان و مدیران امکان می‌دهد تا فرآیندهای کلون کردن پروژه‌های گیت، مدیریت مسیرهای پروژه و اجرای تنظیمات خط فرمان برای Odoo را به صورت خودکار و بهینه انجام دهند. این ابزار همچنین با ارائه مجموعه‌ای از ابزارهای تست، به شما کمک می‌کند تا از عملکرد صحیح و بدون نقص سیستم‌های Odoo خود اطمینان حاصل کنید.</p>
+<ul class="simple">
+<li><p><strong>صرفه‌جویی در زمان:</strong> تمام فرآیندهای کلون کردن، مدیریت مسیرها و اجرای تنظیمات خط فرمان به صورت خودکار توسط Otoolbox انجام می‌شود، که به شما کمک می‌کند زمان کمتری را صرف کارهای تکراری و خسته‌کننده بکنید.</p></li>
+<li><p><strong>افزایش دقت:</strong> با انجام خودکار عملیات، خطاهای انسانی به حداقل می‌رسد. این اطمینان را به شما می‌دهد که تمام تنظیمات به درستی انجام شده و Odoo به درستی اجرا می‌شود.</p></li>
+<li><p><strong>بهبود فرآیند تست:</strong> با ابزارهای تست یکپارچه، می‌توانید به راحتی و با اطمینان از عملکرد صحیح سیستم Odoo خود مطمئن شوید.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>نصب و راه اندازی<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>برای نصب otoolbox، کافی است از pip، که مدیر بسته‌های پایتون است، استفاده کنید. برای این کار می‌توانید از دستور زیر در خط فرمان استفاده کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pipx<span class="w"> </span>install<span class="w"> </span>otoolbox
+</pre></div>
+</div>
+<p>با اجرای این دستور، otoolbox به صورت خودکار دانلود و نصب می‌شود و شما می‌توانید از این ابزار برای مدیریت و نگهداری محیط اودوو خود استفاده کنید.</p>
+<p>پس از نصب ابزار otoolbox با استفاده از pip، می‌توانید با اجرای دستور زیر در خط فرمان، راهنمای ابزار را مشاهده کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>otoolbox<span class="w"> </span>--help
+otoolbox<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>این دستور تمامی گزینه‌ها و دستورات موجود در otoolbox را نمایش می‌دهد و به شما کمک می‌کند تا از قابلیت‌های مختلف آن مطلع شوید. همچنین، با اجرای این دستور می‌توانید مطمئن شوید که ابزار به درستی نصب شده و آماده استفاده است.</p>
+</section>
+<section id="id3">
+<h2>راه اندازی محیط توسعه<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><strong>دستور `otoolbox workspace init`</strong> یکی از ویژگی‌های کلیدی ابزار Otoolbox است که محیط توسعه و مدیریت پروژه را به صورت خودکار ایجاد می‌کند. با این دستور، می‌توانید به راحتی مسیر جاری را به یک پروژه جدید تبدیل کرده و اطلاعات پایه‌ای را که برای مدیریت کارها و شروع پروژه نیاز دارید، تنظیم کنید.</p>
+<p>نحوه کار این دستور به صورت زیر است</p>
+<ol class="arabic simple">
+<li><p><strong>ایجاد فایل‌های پیکربندی پایه</strong>: با اجرای این دستور، Otoolbox فایل‌های پیکربندی ضروری را در مسیر جاری ایجاد می‌کند. این فایل‌ها شامل اطلاعاتی مانند تنظیمات پایگاه داده، مسیرهای وابسته و فایل‌های سیستمی مورد نیاز برای اجرای Odoo هستند.</p></li>
+<li><p><strong>ساختاردهی پوشه‌ها و فایل‌ها</strong>: Otoolbox با ایجاد ساختار منطقی پوشه‌ها و فایل‌ها، به شما کمک می‌کند پروژه خود را به بهترین شکل سازماندهی کنید. این ساختار شامل پوشه‌هایی برای کد منبع، تست‌ها، مستندات و فایل‌های پیکربندی است.</p></li>
+<li><p><strong>افزودن پیکره بندی IDE</strong>: در فرآیند ایجاد پروژه، Otoolbox اطلاعات پایه‌ای مانند مسیرهای توسعه، اجرای اودوو، دیباگ کردن و .. را اضافه می‌کند.</p></li>
+<li><p><strong>پایگاه داده و تنظیمات اولیه</strong>: Otoolbox با تنظیمات اولیه پایگاه داده شما را از نوشتن دستی تنظیمات پیچیده بی‌نیاز می‌کند. این ابزار با پیکربندی صحیح ارتباط با پایگاه داده، به شما کمک می‌کند بلافاصله پس از اجرای دستور، محیط آماده‌ای برای توسعه پروژه‌های Odoo داشته باشید.</p></li>
+</ol>
+<p>شاید فکر کنید که این کارها رو می‌توان به سادگی انجام داد، اما با زیاد شدن تعداد
+افزون‌ها و نسخه‌های متفاوت اودوو این کار عملا سخت و گاهی غیر ممکن است.
+ساختارهای ساب ماژول گیت می‌تواند برای این کار مناسب باشد ولی این روش تنها برای
+یک مشتری مناسب است نه ساختال کلود. در کل موارد زیر از فواید استفاده از
+این ابزار است.</p>
+<ul class="simple">
+<li><p><strong>صرفه‌جویی در زمان</strong>: با ایجاد خودکار فایل‌ها و تنظیمات پایه، زمان کمتری صرف تنظیمات اولیه و ساختاردهی پروژه می‌کنید.</p></li>
+<li><p><strong>کاهش خطاهای انسانی</strong>: با انجام خودکار فرآیند پیکربندی، احتمال رخداد خطاهای انسانی کاهش می‌یابد و محیط توسعه به طور صحیح پیکربندی می‌شود.</p></li>
+<li><p><strong>بهبود بهره‌وری</strong>: با فراهم کردن یک ساختار مشخص و منظم، به شما کمک می‌کند پروژه‌های خود را بهتر مدیریت کنید و تمرکز بیشتری بر توسعه و بهبود پروژه داشته باشید.</p></li>
+</ul>
+<p>برای تبدیل مسیر جاری به یک پروژه توسعه Odoo با استفاده از Otoolbox، کافیست دستور زیر را در خط فرمان اجرا کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>run<span class="w"> </span>init
+</pre></div>
+</div>
+<p>پس از اجرای این دستور، ساختار پوشه‌ها و فایل‌های لازم به طور خودکار در مسیر جاری ایجاد می‌شود و اطلاعات پایه برای مدیریت پروژه Odoo شما تنظیم می‌گردد.
+برای مشاهده گزینه‌های دیگر از این دستور می‌توانید دستور زیر را وارد کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>run<span class="w"> </span>init<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>زمانی که یک workspace ایجاد می‌شود، چندین فایل راهنما به‌طور خودکار در آن ایجاد خواهد شد. این فایل‌ها، مانند README.md، به عنوان منابع اولیه برای آشنایی با محیط توسعه و شروع به کار با آن مفید هستند. فایل README.md معمولاً شامل اطلاعات مفیدی درباره پروژه، نحوه استفاده از ابزارها و دستورات مهم است که می‌تواند راهنمای خوبی برای توسعه‌دهندگان تازه‌کار یا حتی باتجربه باشد تا به سرعت با پروژه و محیط توسعه آشنا شوند.</p>
+</section>
+<section id="id4">
+<h2>مدیریت مخزن‌های نرم افزار<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>دستور <cite>otoolbox repo list</cite> برای نمایش فهرست مخزن‌های نرم‌افزاری در اودوو استفاده می‌شود. مخزن‌ها مجموعه‌هایی از ماژول‌های اودوو هستند که می‌توانند شامل امکانات و قابلیت‌های مختلفی باشند. با استفاده از این دستور، لیستی از همه مخزن‌های موجود در محیط اودوو نمایش داده می‌شود. این فهرست می‌تواند به توسعه‌دهندگان و مدیران سیستم کمک کند تا به راحتی به ماژول‌های مورد نیاز دسترسی پیدا کنند و مدیریت بهتری بر روی آن‌ها داشته باشند. با نمایش این فهرست، کاربران می‌توانند مخزن‌های موجود را بررسی کرده و در صورت نیاز به‌روزرسانی‌ها و تغییرات لازم را اعمال کنند.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>list<span class="w"> </span>--tag<span class="w"> </span>git
+</pre></div>
+</div>
+<p>دستور <cite>otoolbox repo list</cite> لیستی از تمامی مخزن‌های نرم‌افزاری موجود را به‌صورت جدول نمایش می‌دهد. برای مشاهده گزینه‌ها و امکانات بیشتر، می‌توانید از دستور <cite>otoolbox repo list --help</cite> استفاده کنید.</p>
+<p>در ابزار <cite>otoolbox</cite>، می‌توانید با استفاده از دستور <cite>otoolbox repo add</cite> یک پروژه جدید به لیست پروژه‌های خود اضافه کنید. در این مثال:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>git@github.com:odoonix/odoo-book-development.git
+</pre></div>
+</div>
+<p>با اجرای این دستور، پروژه جدید به لیست مخازن اضافه شده و آماده استفاده خواهد بود.</p>
+<p>این دستور سایر تنظیم‌های مورد نیاز برای پروژه را بر اساس این مازول جدید به روز خواهد
+کرد.</p>
+<p>در مقابل گاهی نیاز خواهید داشت که ماژولهایی را که به محیط کاری خود اضافه کرده‌اید
+حذف کنید. دستور زیر برای حذف به کار گرفته می‌شود.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>git@github.com:odoonix/odoo-book-development.git
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>آماده‌سازی و مدیریت محیط توسعه با ابزار Otoolbox<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>یکی از ابزارهای کاربردی که در فرآیند توسعه و شخصی‌سازی نرم‌افزار اودوو به کمک توسعه‌دهندگان می‌آید، <strong>Otoolbox</strong> است که توسط شرکت <strong>Odoonix</strong> توسعه یافته است. این ابزار به‌ویژه برای ساده‌سازی و خودکارسازی مراحل آماده‌سازی محیط توسعه طراحی شده است و می‌تواند تنظیمات لازم برای استفاده از ویرایشگر قدرتمند <strong>Visual Studio Code (VS Code)</strong> را به‌صورت یکپارچه فراهم کند. در این بخش، به بررسی دو دستور کلیدی این ابزار و نقش آن‌ها در مدیریت محیط توسعه با VS Code می‌پردازیم.</p>
+<p>اولین گام برای هر توسعه‌دهنده، آماده‌سازی یک محیط توسعه کارآمد است. دستور زیر این کار را به‌سادگی انجام می‌دهد:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>otoolbox<span class="w"> </span>dev<span class="w"> </span>start
+</pre></div>
+</div>
+<p>این دستور تمامی تنظیمات مورد نیاز برای اجرای VS Code در محیط توسعه اودوو را به‌صورت خودکار پیکربندی می‌کند. این شامل نصب افزونه‌های ضروری، تنظیم مسیرهای پروژه، و اتصال به پایگاه داده اودوو می‌شود. پس از اجرای این دستور، VS Code به‌طور مستقیم باز می‌شود و توسعه‌دهنده می‌تواند بلافاصله شروع به کدنویسی، دیباگ کردن، یا شخصی‌سازی ماژول‌های اودوو کند. این قابلیت نه‌تنها زمان راه‌اندازی را کاهش می‌دهد، بلکه اطمینان می‌دهد که محیط توسعه با استانداردهای لازم برای کار با اودوو هم‌راستا باشد.</p>
+<p>در طول زمان، ممکن است نیاز به به‌روزرسانی تنظیمات محیط توسعه به‌وجود آید؛ مثلاً وقتی نسخه جدیدی از اودوو منتشر می‌شود یا افزونه‌های VS Code نیاز به تغییر دارند. برای این منظور، Otoolbox دستور زیر را ارائه می‌دهد:</p>
+<p>این دستور تنظیمات محیط توسعه را با آخرین تغییرات هماهنگ می‌کند. گزینه <cite>--tags dev</cite> مشخص می‌کند که به‌روزرسانی صرفاً برای محیط توسعه (development environment) اعمال شود. این فرایند می‌تواند شامل به‌روزرسانی افزونه‌ها، اصلاح پیکربندی‌ها، یا حتی اضافه کردن قابلیت‌های جدید به VS Code باشد. با اجرای این دستور، توسعه‌دهندگان مطمئن می‌شوند که ابزارها و تنظیماتشان همیشه به‌روز و آماده برای پروژه‌های جدید یا ادامه کار روی پروژه‌های موجود است.</p>
+<p>ابزار Otoolbox فراتر از یک راه‌انداز ساده عمل می‌کند؛ این ابزار به‌عنوان یک مدیر هوشمند برای محیط توسعه با VS Code عمل می‌کند. با خودکارسازی وظایف تکراری مانند نصب افزونه‌ها، تنظیمات اولیه، و به‌روزرسانی‌ها، توسعه‌دهندگان می‌توانند تمرکز خود را روی کدنویسی و حل مسائل پیچیده‌تر معطوف کنند. علاوه بر این، یکپارچگی آن با VS Code باعث می‌شود که تجربه کاربری بهبود یابد و خطاهای ناشی از تنظیمات نادرست به حداقل برسد. این ابزار به‌ویژه برای تیم‌هایی که روی پروژه‌های بزرگ اودوو کار می‌کنند، مفید است، زیرا استانداردسازی محیط توسعه را تضمین می‌کند و همکاری بین اعضای تیم را تسهیل می‌بخشد.</p>
+<p>در نهایت، استفاده از Otoolbox با این دو دستور کلیدی، توسعه‌دهندگان را قادر می‌سازد تا با کمترین دردسر، یک محیط توسعه حرفه‌ای و به‌روز را در VS Code مدیریت کنند و بهره‌وری خود را در پروژه‌های اودوو به حداکثر برسانند.</p>
+</section>
+<section id="id6">
+<h2>آماده‌سازی پیش‌نیازهای نرم‌افزاری با Otoolbox در اوبونتو<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>یکی از چالش‌های اولیه در توسعه نرم‌افزار اودوو، نصب و پیکربندی پیش‌نیازهای نرم‌افزاری است که برای اجرای صحیح محیط توسعه ضروری هستند. ابزار <strong>Otoolbox</strong>، که توسط شرکت <strong>Odoonix</strong> توسعه یافته، این فرآیند را با ارائه یک دستور ساده و کاربردی به‌طور قابل‌توجهی آسان کرده است. در این بخش، به بررسی چگونگی استفاده از Otoolbox برای تهیه لیست و نصب نرم‌افزارهای مورد نیاز در سیستم‌عامل اوبونتو می‌پردازیم.</p>
+<p>برای نصب خودکار پیش‌نیازهای لازم، کافی است دستور زیر را در ترمینال اجرا کنید:</p>
+<p>این دستور به‌طور خاص طراحی شده است تا تمامی نرم‌افزارها و وابستگی‌های مورد نیاز برای توسعه اودوو را شناسایی کرده و روی سیستم شما نصب کند. این شامل مواردی مانند Python، PostgreSQL، و سایر کتابخانه‌ها و ابزارهایی است که اودوو برای اجرا و توسعه به آن‌ها وابسته است. با اجرای این دستور، دیگر نیازی به نصب دستی هر یک از این اجزا ندارید، و Otoolbox این کار را به‌صورت یکپارچه و خودکار انجام می‌دهد.</p>
+<p>در حال حاضر، این دستور به‌طور کامل با نسخه <strong>Ubuntu 24.04</strong> سازگار است. این نسخه از اوبونتو به دلیل به‌روز بودن و پشتیبانی از آخرین بسته‌های نرم‌افزاری، گزینه‌ای محبوب برای توسعه‌دهندگان اودوو محسوب می‌شود. Otoolbox با بهره‌گیری از این سازگاری، اطمینان می‌دهد که پیش‌نیازها با نسخه‌های مناسب و تست‌شده نصب شوند تا از بروز مشکلات احتمالی در آینده جلوگیری شود. البته، اگر از نسخه دیگری از اوبونتو یا یک توزیع دیگر لینوکس استفاده می‌کنید، ممکن است نیاز به بررسی سازگاری یا به‌روزرسانی ابزار داشته باشید.</p>
+<p>استفاده از این دستور در ابتدای فرآیند توسعه، مزایای متعددی دارد:
+- <strong>صرفه‌جویی در زمان:</strong> به‌جای جستجو و نصب دستی هر نرم‌افزار، این دستور همه‌چیز را در یک مرحله انجام می‌دهد.
+- <strong>کاهش خطا:</strong> نصب خودکار پیش‌نیازها احتمال اشتباهات ناشی از پیکربندی نادرست یا فراموش کردن یک جزء را به حداقل می‌رساند.
+- <strong>استانداردسازی:</strong> این ابزار محیطی یکسان و قابل تکرار را برای همه توسعه‌دهندگان فراهم می‌کند، که به‌ویژه در پروژه‌های تیمی مفید است.</p>
+<p>این دستور به‌عنوان نقطه شروعی برای سایر قابلیت‌های Otoolbox عمل می‌کند. پس از اجرای <cite>otoolbox ubuntu init</cite> و نصب پیش‌نیازها، می‌توانید از دستوراتی مانند <cite>otoolbox dev start</cite> (برای راه‌اندازی محیط توسعه) یا <cite>otoolbox run update --tags dev</cite> (برای به‌روزرسانی تنظیمات) استفاده کنید. این یکپارچگی، Otoolbox را به یک ابزار جامع برای مدیریت کل چرخه توسعه اودوو تبدیل می‌کند.</p>
+<p>قبل از اجرای این دستور، مطمئن شوید که دسترسی‌های لازم (مانند دسترسی root یا استفاده از <cite>sudo</cite>) را دارید، زیرا نصب برخی بسته‌ها ممکن است نیازمند مجوزهای سیستمی باشد. همچنین، پیشنهاد می‌شود که سیستم شما به اینترنت متصل باشد تا بسته‌ها از مخازن اوبونتو دانلود شوند.</p>
+<p>دستور <cite>otoolbox ubuntu init</cite> یک راه‌حل سریع و مؤثر برای آماده‌سازی سیستم‌عامل اوبونتو 24.04 برای توسعه اودوو است. با اجرای این دستور، شما می‌توانید با اطمینان خاطر از نصب صحیح پیش‌نیازها، تمرکز خود را روی توسعه و شخصی‌سازی اودوو معطوف کنید. این قابلیت، همراه با سایر ابزارهای Otoolbox که در بخش‌های دیگر توضیح داده شده‌اند، به شما کمک می‌کند تا محیط توسعه‌ای کارآمد، استاندارد و حرفه‌ای داشته باشید.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">قبلی</p>
+        <p class="prev-next-title">git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vscode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">بعدی</p>
+        <p class="prev-next-title">VS Code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otoolbox">ویژگی‌های کلیدی Otoolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">چگونه Otoolbox به شما کمک می‌کند</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">نصب و راه اندازی</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">راه اندازی محیط توسعه</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">مدیریت مخزن‌های نرم افزار</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">آماده‌سازی و مدیریت محیط توسعه با ابزار Otoolbox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">آماده‌سازی پیش‌نیازهای نرم‌افزاری با Otoolbox در اوبونتو</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright اودوونیکس ۱۴۰۴.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    ایجاد شده با<a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

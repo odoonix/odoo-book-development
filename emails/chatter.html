@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fa" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chatter — ابزار ارتباطی درون اودو &#8212; مستندات کتاب اودوو: توسعه و برنامه نویسی</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b998bf2" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=30788233"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/translations.js?v=5df48d09"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KJ64LHCQZP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-KJ64LHCQZP');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'emails/chatter';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://odoonix.github.io/odoo-book-accounting/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="فهرست" href="../genindex.html" />
+    <link rel="search" title="جستجو" href="../search.html" />
+    <link rel="next" title="فعالیت‌ها (Activity)" href="activity.html" />
+    <link rel="prev" title="پیکربندی ایمیل خروجی" href="outgoing-email-configuration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fa"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">
+    ما را در توسعه و نگداری این کتاب
+    <a href='https://odoonix.com/pages/donate'>
+        حمایت مالی کنید! 
+    </a>
+    </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://odoonix.github.io/odoo-book-accounting">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-light.png" class="logo__image only-light" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+  
+  
+    <p class="title logo__title">کتاب اودوو: توسعه و برنامه نویسی</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../setup-development-environment/index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../setup-development-environment/index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="incoming-email-configuration.html">پیکربندی ایمیل ورودی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outgoing-email-configuration.html">پیکربندی ایمیل خروجی</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chatter — ابزار ارتباطی درون اودو</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">فعالیت‌ها (Activity)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="periodic-digest-emails.html">ایمیل‌های خلاصه دوره‌ای (Periodic Digest Emails)</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items" aria-labelledby="pst-indices-navigation-heading-2">
+  <p id="pst-indices-navigation-heading-2" class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="../genindex.html"
+             accesskey="I">فهرست کلی</a>
+        </li>
+  </ul>
+</nav></div>
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">ایمیل در اودو ۱۸</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Chatter — ابزار ارتباطی درون اودو</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="chatter">
+<h1>Chatter — ابزار ارتباطی درون اودو<a class="headerlink" href="#chatter" title="Link to this heading">#</a></h1>
+<p>Chatter یکی از ابزارهای یکپارچه اودو است که در پایین یا کنار فرم‌های مختلف (مثل سفارش فروش، فاکتور، فرصت فروش و ...) نمایش داده می‌شود. این ابزار به کاربران اجازه می‌دهد بدون خروج از رکورد، مستقیماً با مشتریان ارتباط بگیرند، یادداشت داخلی بنویسند یا فعالیت‌ها را برنامه‌ریزی کنند.</p>
+<p>برای مثال، یک سفارش فروش را باز کنید. در پایین یا کنار صفحه، بخش Chatter را خواهید دید.</p>
+<img alt="بخش Chatter در فرم سفارش فروش اودو" class="align-center" src="../_images/chatter-01.png" />
+<p>امکانات موجود در Chatter:</p>
+<ul class="simple">
+<li><p>برای اشاره به یک کاربر از نماد <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> استفاده کنید؛ برای اشاره به یک کانال از <code class="docutils literal notranslate"><span class="pre">#</span></code> استفاده کنید.</p></li>
+<li><p>می‌توانید emoji اضافه کنید.</p></li>
+<li><p>پیوست فایل هنگام ارسال پیام امکان‌پذیر است.</p></li>
+</ul>
+<section id="send-message">
+<h2>ارسال پیام (Send Message)<a class="headerlink" href="#send-message" title="Link to this heading">#</a></h2>
+<p>از این گزینه برای ارسال ایمیل مستقیم به مشتری یا سایر دنبال‌کنندگان رکورد استفاده کنید. پیام در تاریخچه Chatter ثبت می‌شود.</p>
+</section>
+<section id="log-note">
+<h2>یادداشت داخلی (Log Note)<a class="headerlink" href="#log-note" title="Link to this heading">#</a></h2>
+<p>این قابلیت برای مستندسازی فعالیت‌های داخلی تیم است و برای مشتریان قابل مشاهده نیست. مفید برای ثبت پیشرفت کار و اطلاعات داخلی.</p>
+<img alt="گزینه Log Note در Chatter" class="align-center" src="../_images/chatter-02.png" />
+</section>
+<section id="schedule-activity">
+<h2>برنامه‌ریزی فعالیت (Schedule Activity)<a class="headerlink" href="#schedule-activity" title="Link to this heading">#</a></h2>
+<p>این قابلیت به شما امکان می‌دهد وظایف و یادآوری‌ها را برای کاربران مشخص برنامه‌ریزی کنید.</p>
+<img alt="پنجره برنامه‌ریزی فعالیت در Chatter" class="align-center" src="../_images/chatter-03.png" />
+</section>
+<section id="attachments">
+<h2>پیوست‌ها (Attachments)<a class="headerlink" href="#attachments" title="Link to this heading">#</a></h2>
+<p>آیکون پیوست تعداد فایل‌های ضمیمه‌شده به رکورد را نشان می‌دهد.</p>
+<img alt="نمایش تعداد پیوست‌ها در Chatter" class="align-center" src="../_images/chatter-04.png" />
+</section>
+<section id="followers">
+<h2>دنبال‌کنندگان (Followers)<a class="headerlink" href="#followers" title="Link to this heading">#</a></h2>
+<p>این بخش نشان می‌دهد چه کسانی رکورد را دنبال می‌کنند. کسی که رکورد را دنبال می‌کند، از هر تغییر یا پیام جدید آگاه می‌شود.</p>
+<img alt="لیست دنبال‌کنندگان رکورد" class="align-center" src="../_images/chatter-05.png" />
+<p>برای مشاهده لیست دنبال‌کنندگان روی آیکون دنبال‌کنندگان کلیک کنید. از این بخش می‌توانید دنبال‌کننده اضافه یا حذف کنید.</p>
+<img alt="پنجره افزودن دنبال‌کننده" class="align-center" src="../_images/chatter-06.png" />
+<img alt="گزینه‌های ویرایش در لیست دنبال‌کنندگان" class="align-center" src="../_images/chatter-07.png" />
+<img alt="اشتراک‌های قابل تنظیم برای دنبال‌کنندگان" class="align-center" src="../_images/chatter-08.png" />
+<p>پس از ارسال پیام، یادداشت یا برنامه‌ریزی فعالیت، تاریخچه کامل در بخش Chatter نمایش داده می‌شود.</p>
+<img alt="تاریخچه کامل فعالیت‌ها در Chatter" class="align-center" src="../_images/chatter-09.png" />
+</section>
+<section id="tracking">
+<h2>ردیابی تغییرات فیلدها (Tracking)<a class="headerlink" href="#tracking" title="Link to this heading">#</a></h2>
+<p>وقتی یک فیلد در فرم تغییر می‌کند، اودو می‌تواند این تغییر را به صورت خودکار در Chatter ثبت کند. این قابلیت <strong>Tracking</strong> نام دارد و برای نظارت بر تغییرات در محیط چند کاربره بسیار مفید است.</p>
+<p>برای فعال‌سازی، کافی است ویژگی <code class="docutils literal notranslate"><span class="pre">tracking=True</span></code> را در تعریف فیلد بنویسید:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">tracking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>افزودن Chatter به ماژول سفارشی<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>برای استفاده از Chatter در ماژول سفارشی خود، باید مدل مربوطه از <code class="docutils literal notranslate"><span class="pre">mail.thread</span></code> ارث‌بری کند:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">YourModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;your.model&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">,</span> <span class="s1">&#39;mail.activity.mixin&#39;</span><span class="p">]</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">tracking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>سپس در تعریف form view، تگ <code class="docutils literal notranslate"><span class="pre">&lt;chatter/&gt;</span></code> را اضافه کنید:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;your_model_form_view&quot;</span><span class="w"> </span><span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>your.model.form<span class="nt">&lt;/field&gt;</span>
+<span class="w">    </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>your.model<span class="nt">&lt;/field&gt;</span>
+<span class="w">    </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;arch&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;form</span><span class="w"> </span><span class="na">string=</span><span class="s">&quot;Your Model&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;sheet&gt;</span>
+<span class="w">                </span><span class="nt">&lt;group&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;field</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/group&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/sheet&gt;</span>
+<span class="w">            </span><span class="nt">&lt;chatter/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/form&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">توجه</p>
+<p>در اودو ۱۸، به جای <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;oe_chatter&quot;&gt;</span></code> از تگ کوتاه <code class="docutils literal notranslate"><span class="pre">&lt;chatter/&gt;</span></code> استفاده می‌شود. این تغییر باعث کد تمیزتر و خواناتر می‌شود.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="outgoing-email-configuration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">قبلی</p>
+        <p class="prev-next-title">پیکربندی ایمیل خروجی</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="activity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">بعدی</p>
+        <p class="prev-next-title">فعالیت‌ها (Activity)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#send-message">ارسال پیام (Send Message)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-note">یادداشت داخلی (Log Note)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schedule-activity">برنامه‌ریزی فعالیت (Schedule Activity)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attachments">پیوست‌ها (Attachments)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#followers">دنبال‌کنندگان (Followers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking">ردیابی تغییرات فیلدها (Tracking)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">افزودن Chatter به ماژول سفارشی</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright اودوونیکس ۱۴۰۴.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    ایجاد شده با<a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

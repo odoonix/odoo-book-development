@@ -1,0 +1,1031 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fa" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pgadmin &#8212; مستندات کتاب اودوو: توسعه و برنامه نویسی</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b998bf2" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=30788233"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/translations.js?v=5df48d09"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KJ64LHCQZP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-KJ64LHCQZP');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'setup-development-environment/pgadmin';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://odoonix.github.io/odoo-book-accounting/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="فهرست" href="../genindex.html" />
+    <link rel="search" title="جستجو" href="../search.html" />
+    <link rel="next" title="git" href="git.html" />
+    <link rel="prev" title="PostgreSQL" href="PostgreSQL.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fa"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">
+    ما را در توسعه و نگداری این کتاب
+    <a href='https://odoonix.com/pages/donate'>
+        حمایت مالی کنید! 
+    </a>
+    </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://odoonix.github.io/odoo-book-accounting">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-light.png" class="logo__image only-light" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+  
+  
+    <p class="title logo__title">کتاب اودوو: توسعه و برنامه نویسی</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../emails/index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../emails/index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docker.html">نصب داکر</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker-compose.html">نصب داکر کامپوز</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PostgreSQL.html">PostgreSQL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">pgadmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="otoolbox.html">Odoonix Toolbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">VS Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-repo.html">project-repo</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items" aria-labelledby="pst-indices-navigation-heading-2">
+  <p id="pst-indices-navigation-heading-2" class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="../genindex.html"
+             accesskey="I">فهرست کلی</a>
+        </li>
+  </ul>
+</nav></div>
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">محیط توسعه و ابزارهای مورد نیاز برای Odoo 18</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pgadmin</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pgadmin">
+<h1>pgadmin<a class="headerlink" href="#pgadmin" title="Link to this heading">#</a></h1>
+<p>pgAdmin یک نرم‌افزار مدیریت پایگاه داده رایگان و متن‌باز است که برای مدیریت و توسعه‌ی PostgreSQL طراحی شده. این ابزار، محیط کاربری گرافیکی راحت و کاربرپسندی را برای انجام اعمال مختلف بر روی پایگاه‌های داده‌ی PostgreSQL فراهم می‌کند. با استفاده از pgAdmin، می‌توانید کوئری‌های SQL بنویسید و اجرا کنید، جداول و پابلیکیشن‌های مختلف را مدیریت کنید، و داده‌ها را به صورت گرافیکی مشاهده و تغییر دهید. همچنین این نرم‌افزار به شما امکان می‌دهد تا کاربران و نقش‌های مختلفی را برای پایگاه‌های داده خود تعریف کنید و سطوح دسترسی را مدیریت کنید.</p>
+<p>این یک نمونه تغییرات است</p>
+<p>pgAdmin از طریق رابط کاربری تحت وب و همچنین به صورت دسکتاپ در دسترس است و می‌تواند روی سیستم‌عامل‌های مختلفی مانند ویندوز، لینوکس و macOS اجرا شود. از ویژگی‌های برجسته‌ی این نرم‌افزار می‌توان به پشتیبانی از عملیات‌های پیشرفته‌ی پایگاه داده، نمایش بصری داده‌ها و ساختار پایگاه‌های داده به صورت درختی، و ارائه‌ی گزارش‌ها و آمارهای مختلف اشاره کرد. با استفاده از pgAdmin، توسعه‌دهندگان و مدیران پایگاه داده می‌توانند به راحتی و با کارآیی بالا پایگاه‌های داده‌ی خود را مدیریت و بهینه‌سازی کنند.</p>
+<section id="id1">
+<h2>راه اندازی  با داکر<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>مطمئناً، می‌توانید pgAdmin  را به راحتی با -----نمونه----- استفاده از Docker نصب کنید و به PostgreSQL 16 متصل شوید. فرض ما این است که PostgreSQL 16 از قبل روی Ubuntu 24.04 نصب و اجرا شده است. در اینجا، مراحل نصب و راه‌اندازی pgAdmin  با Docker را توضیح می‌دهیم:</p>
+<p>گام‌های نصب و راه‌اندازی pgAdmin  با Docker</p>
+<ol class="arabic">
+<li><p><strong>ایجاد شبکه Docker (اختیاری ولی توصیه شده)</strong></p>
+<blockquote>
+<div><p>ایجاد یک شبکه Docker برای ارتباط آسان بین کانتینرهای PostgreSQL و pgAdmin اولین کاری است که باید انجام شود. این کار با استفاده از دستور زیر انجام خواهد شد:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>odoo-network
+</pre></div>
+</div>
+<p>این شبکه به کانتینرها اجازه می‌دهد که به طور مستقیم با یکدیگر ارتباط برقرار کنند. البته در گام‌های بعد به شما نشان خواهیم داد که چطور کاینرها چطور به این شبکه متصل کنید.</p>
+</div></blockquote>
+</li>
+<li><p><strong>اجرای کانتینر pgAdmin 4</strong></p>
+<blockquote>
+<div><p>اکنون می‌توانید دستور زیر را برای اجرای pgAdmin 4 در Docker اجرا کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>pgadmin<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">PGADMIN_DEFAULT_EMAIL</span><span class="o">=</span>your_email@domain.com<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">PGADMIN_DEFAULT_PASSWORD</span><span class="o">=</span>your_password<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="w"> </span>odoo-network<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>dpage/pgadmin4
+</pre></div>
+</div>
+<p>در این دستور:</p>
+<ul class="simple">
+<li><p><cite>-d</cite> کانتینر را در پس‌زمینه اجرا می‌کند.</p></li>
+<li><p><cite>--name</cite> نام کانتینر را به عنوان <cite>pgadmin-container</cite> تعریف می‌کند.</p></li>
+<li><p><cite>-e PGADMIN_DEFAULT_EMAIL</cite> و <cite>-e PGADMIN_DEFAULT_PASSWORD</cite> ایمیل و رمز عبور پیش‌فرض برای ورود به pgAdmin 4 را تنظیم می‌کنند.</p></li>
+<li><p><cite>--network</cite> شبکه‌ای که کانتینر به آن متصل می‌شود، را تعیین می‌کند. این همان شبکه‌ای است که در مرحله قبلی ایجاد کردیم.</p></li>
+<li><p><cite>-p 80:80</cite> پورت 80 روی میزبان را به پورت 80 کانتینر متصل می‌کند.</p></li>
+<li><p><cite>dpage/pgadmin4</cite> تصویر Docker رسمی pgAdmin 4 را از Docker Hub دانلود و اجرا می‌کند.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>دسترسی به pgAdmin 4</strong></p>
+<p>مرورگر وب خود را باز کنید و به آدرس <cite>http://localhost</cite> بروید. شما باید صفحه ورود pgAdmin 4 را مشاهده کنید. با استفاده از ایمیل و رمز عبوری که در مرحله قبل تنظیم کرده‌اید، وارد شوید.</p>
+</li>
+<li><p><strong>اتصال به PostgreSQL 16</strong></p>
+<blockquote>
+<div><p>پس از ورود به محیط pgAdmin 4:
+- روی گزینه <strong>&quot;Add New Server&quot;</strong> کلیک کنید.
+- نام سرور را وارد کنید و به بخش <strong>&quot;Connection&quot;</strong> بروید.
+- در قسمت <strong>&quot;Host name/address&quot;</strong>، نام کانتینر PostgreSQL که قبلاً ایجاد کرده‌اید (در این مثال <cite>postgresql16</cite>) را وارد کنید.
+- پورت را به <cite>5432</cite> تنظیم کنید و اطلاعات کاربری PostgreSQL خود (<cite>username</cite> و <cite>password</cite>) را وارد کنید.
+- روی <strong>&quot;Save&quot;</strong> کلیک کنید تا سرور به pgAdmin 4 اضافه شود.</p>
+</div></blockquote>
+</li>
+</ol>
+<p>با انجام این مراحل، شما به راحتی می‌توانید pgAdmin 4 را با استفاده از Docker نصب کنید و به PostgreSQL 16 متصل شوید. اکنون می‌توانید از pgAdmin برای مدیریت پایگاه داده PostgreSQL خود به صورت گرافیکی استفاده کنید.</p>
+<div class="admonition note">
+<p class="admonition-title">توجه</p>
+<p>در بخش قبل اجرا کردن پایگاه داده با استفاده از داکر را بیان کردیم. اما در انجا در مورد اتصال به شبکه‌های مجاری حرفی به میان آورده نشد.  برای اتصال بین این دو برنامه باید پعد از ایجاد شبکه، کانتینر ایجاد شده برای پایگاه داده را از بین برده و یک کانتینر جدید ایجاد کنید. کانتینر جدید باید به شبکه ایجاد شده متصل باشد. کد زیر نحوه انجام این کار را نشان می‌دهد</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>postgres16<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="w"> </span>odoo-network<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">POSTGRES_USER</span><span class="o">=</span>your_user<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>your_password<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">POSTGRES_DB</span><span class="o">=</span>your_database<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/home/your_user/postgresql_data:/var/lib/postgresql/data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>postgres:16
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>راه اندازی با استفاده از داکر کامپوز<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>بله، استفاده از Docker Compose می‌تواند فرآیند نصب و اجرای PostgreSQL 16 و pgAdmin 4 را ساده‌تر و هماهنگ‌تر کند. فرض بر این است که Docker از قبل نصب شده و شما می‌خواهید از Docker Compose برای مدیریت این کانتینرها استفاده کنید. در اینجا، مسیر انجام این کار را توضیح می‌دهم:</p>
+<p>مراحل راه‌اندازی PostgreSQL 16 و pgAdmin 4 با Docker Compose</p>
+<ol class="arabic">
+<li><p><strong>ایجاد فایل `docker-compose.yml`</strong></p>
+<blockquote>
+<div><p>ابتدا یک پوشه برای پروژه خود ایجاد کنید و به آن مسیر بروید. سپس یک فایل به نام <cite>docker-compose.yml</cite> در این پوشه ایجاد کنید:</p>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">postgres</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql16</span>
+<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_user</span>
+<span class="w">            </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_password</span>
+<span class="w">            </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_database</span>
+<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/your_user/postgresql_data:/var/lib/postgresql/data</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432:5432&quot;</span>
+<span class="w">        </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odoo-network</span>
+
+<span class="w">    </span><span class="nt">pgadmin</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpage/pgadmin4</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin-container</span>
+<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_email@domain.com</span>
+<span class="w">            </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_password</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span>
+<span class="w">        </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odoo-network</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">odoo-network</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</pre></div>
+</div>
+<p>در این فایل:</p>
+<ul class="simple">
+<li><p><cite>version</cite> مشخص کننده نسخه Docker Compose است.</p></li>
+<li><p><cite>services</cite> سرویس‌های مختلفی که می‌خواهید اجرا کنید را تعریف می‌کند: <cite>postgres</cite> و <cite>pgadmin</cite>.</p></li>
+<li><p><cite>postgres</cite> شامل تنظیمات مرتبط با PostgreSQL 16 است.</p></li>
+<li><p><cite>pgadmin</cite> شامل تنظیمات مرتبط با pgAdmin 4 است.</p></li>
+<li><p><cite>networks</cite> شبکه‌ای مشترک برای ارتباط بین کانتینرها را تعریف می‌کند.</p></li>
+<li><p>تمامی مسیر‌ها و متغیر‌های محیطی را بر اساس نیاز خود تنظیم کنید.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>اجرای Docker Compose</strong></p>
+<blockquote>
+<div><p>در ترمینال به مسیر پوشه‌ی پروژه‌ی خود بروید و دستور زیر را اجرا کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>این دستور Docker Compose را فعال می‌کند و سرویس‌های تعریف شده در فایل <cite>docker-compose.yml</cite> را در پس‌زمینه اجرا می‌کند.</p>
+</div></blockquote>
+</li>
+<li><p><strong>بررسی وضعیت سرویس‌ها</strong></p>
+<blockquote>
+<div><p>برای بررسی وضعیت سرویس‌ها و کانتینرها می‌توانید از دستور زیر استفاده کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
+</pre></div>
+</div>
+<p>همچنین، برای مشاهده لاگ‌ها می‌توانید از دستور زیر استفاده کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>logs
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>دسترسی به pgAdmin 4</strong></p>
+<blockquote>
+<div><p>مرورگر وب خود را باز کنید و به آدرس <cite>http://localhost</cite> بروید. شما باید صفحه ورود pgAdmin 4 را مشاهده کنید. با استفاده از ایمیل و رمز عبوری که قبلاً در فایل <cite>docker-compose.yml</cite> تنظیم کرده‌اید، وارد شوید.</p>
+</div></blockquote>
+</li>
+<li><p><strong>اتصال به PostgreSQL 16</strong></p>
+<blockquote>
+<div><p>پس از ورود به محیط pgAdmin 4:
+- روی گزینه <strong>&quot;Add New Server&quot;</strong> کلیک کنید.
+- نام سرور را وارد کرده و به بخش <strong>&quot;Connection&quot;</strong> بروید.
+- در قسمت <strong>&quot;Host name/address&quot;</strong>، نام سرویس PostgreSQL که در فایل <cite>docker-compose.yml</cite> تعریف شده است (<cite>postgresql16</cite>) را وارد کنید.
+- پورت را به <cite>5432</cite> تنظیم کنید و اطلاعات کاربری PostgreSQL خود (<cite>username</cite> و <cite>password</cite>) را وارد کنید.
+- روی <strong>&quot;Save&quot;</strong> کلیک کنید تا سرور به pgAdmin 4 اضافه شود.</p>
+</div></blockquote>
+</li>
+</ol>
+<p>با انجام این مراحل، PostgreSQL 16 و pgAdmin 4 با استفاده از Docker Compose راه‌اندازی شده و داده‌ها در پوشه‌ی مونت شده‌ی محلی ذخیره می‌شوند. این روش به شما امکان می‌دهد به راحتی محیط توسعه خود را مدیریت و پایگاه داده خود را بهینه‌سازی کنید.</p>
+<div class="admonition note">
+<p class="admonition-title">توجه</p>
+<p>برای توقف سرویس‌ها، می‌توانید از دستور زیر استفاده کنید:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+</div>
+<p>امیدوارم این راهنما به شما کمک کند! اگر سوال یا مشکلی داشتید، حتماً بپرسید.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PostgreSQL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">قبلی</p>
+        <p class="prev-next-title">PostgreSQL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="git.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">بعدی</p>
+        <p class="prev-next-title">git</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">راه اندازی  با داکر</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">راه اندازی با استفاده از داکر کامپوز</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright اودوونیکس ۱۴۰۴.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    ایجاد شده با<a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
