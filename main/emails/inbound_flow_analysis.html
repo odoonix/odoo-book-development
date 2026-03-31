@@ -1,0 +1,1353 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fa" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>فرآیند پردازش ایمیل‌های ورودی &#8212; مستندات کتاب اودوو: توسعه و برنامه نویسی</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b998bf2" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=30788233"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/translations.js?v=5df48d09"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KJ64LHCQZP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-KJ64LHCQZP');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'emails/inbound_flow_analysis';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://odoonix.github.io/odoo-book-accounting/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'main';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="فهرست" href="../genindex.html" />
+    <link rel="search" title="جستجو" href="../search.html" />
+    <link rel="next" title="پیکربندی ایمیل ورودی" href="incoming-email-configuration.html" />
+    <link rel="prev" title="دیباچه" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fa"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">
+    ما را در توسعه و نگداری این کتاب
+    <a href='https://odoonix.com/pages/donate'>
+        حمایت مالی کنید! 
+    </a>
+    </div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://odoonix.github.io/odoo-book-accounting">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-light.png" class="logo__image only-light" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="کتاب اودوو - توسعه با اودوونیکس"/>
+  
+  
+    <p class="title logo__title">کتاب اودوو: توسعه و برنامه نویسی</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../setup-development-environment/index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="جستجو" aria-label="جستجو" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">جستجو</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction.html">
+    دیباچه
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../about/index.html">
+    در مورد کتاب
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../setup-development-environment/index.html">
+    محیط توسعه و ابزارهای مورد نیاز برای Odoo 18
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../creating-odoo-modules/index.html">
+    ایجاد ماژول‌های اودوو
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../server-side-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../data-management/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../views/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../security/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../internationalization/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../web-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../website-development/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-web-library/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../test-cases/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../odoo-sh/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../remote-procedure-calls-rpc/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../performance-optimisation/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    ایمیل در اودو ۱۸
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../point-of-sales/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../iot-box/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../others/index.html">
+    TODO
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../appendex/index.html">
+    پیوست‌ها
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://moonsun.au">
+    Moonsun (Golden Odoo Partner)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://odoonix.com">
+    Odoonix (OCA Partner)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/odoonix/odoo-book-accounting" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">دیباچه</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">فرآیند پردازش ایمیل‌های ورودی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="incoming-email-configuration.html">پیکربندی ایمیل ورودی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="outgoing-email-configuration.html">پیکربندی ایمیل خروجی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chatter.html">Chatter — ابزار ارتباطی درون اودو</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activity.html">فعالیت‌ها (Activity)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="periodic-digest-emails.html">ایمیل‌های خلاصه دوره‌ای (Periodic Digest Emails)</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items" aria-labelledby="pst-indices-navigation-heading-2">
+  <p id="pst-indices-navigation-heading-2" class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="../genindex.html"
+             accesskey="I">فهرست کلی</a>
+        </li>
+  </ul>
+</nav></div>
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">ایمیل در اودو ۱۸</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">فرآیند پردازش ایمیل‌های ورودی</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="id1">
+<h1>فرآیند پردازش ایمیل‌های ورودی<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>وقتی یک ایمیل به اودو می‌رسد، فقط یک متن ساده دریافت نمی‌شود. اودو باید تصمیم بگیرد این
+ایمیل دقیقاً چه معنایی دارد: آیا یک پیام جدید است؟ آیا پاسخ به یک گفت‌وگوی قبلی است؟ آیا
+باید باعث ایجاد رکوردی تازه شود؟ یا اصلاً یک پیام خطا و برگشتی است که نباید مانند یک ایمیل
+عادی با آن رفتار کرد؟</p>
+<p>در این بخش می‌خواهیم مسیر کامل پردازش ایمیل ورودی را به زبان ساده و در عین حال حرفه‌ای
+بررسی کنیم؛ از لحظه‌ای که ایمیل خام از سرور دریافت می‌شود تا زمانی که یک رکورد در اودو
+ایجاد یا به‌روزرسانی می‌شود و پیام در Chatter ثبت می‌گردد.</p>
+<p>این مبحث برای افراد مبتدی مهم است، چون بسیاری از قابلیت‌های پیشرفته اودو ــ مثل
+<code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Alias</span></code>، پاسخ‌گویی از طریق ایمیل، ثبت خودکار تیکت‌ها، یا ساخت سرنخ از روی ایمیل ــ
+بر پایه همین جریان پردازش ساخته شده‌اند.</p>
+<p>در پایان این بخش، یک دید روشن از موارد زیر خواهید داشت:</p>
+<ul class="simple">
+<li><p>ایمیل از چه مسیرهایی وارد اودو می‌شود.</p></li>
+<li><p>اودو چگونه ایمیل خام را به داده قابل پردازش تبدیل می‌کند.</p></li>
+<li><p>چه کنترل‌هایی برای جلوگیری از تکرار، حلقه و خطا انجام می‌شود.</p></li>
+<li><p>اودو چگونه تصمیم می‌گیرد پیام به کدام مدل یا رکورد مربوط است.</p></li>
+<li><p>در نهایت، رکورد چگونه ساخته یا به‌روزرسانی می‌شود.</p></li>
+</ul>
+<section id="id2">
+<h2>چرا شناخت این جریان مهم است؟<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>اگر فقط کاربر نهایی اودو باشید، شاید کافی باشد بدانید ایمیل‌ها «کار می‌کنند». اما وقتی وارد
+توسعه ماژول، دیباگ رفتارهای ایمیل، طراحی aliasها یا تحلیل خطاهای mail gateway می‌شوید، دیگر
+این دید سطحی کافی نیست.</p>
+<p>برای مثال، در این موقعیت‌ها باید این جریان را بشناسید:</p>
+<ul class="simple">
+<li><p>وقتی ایمیل به اودو می‌رسد اما رکوردی ایجاد نمی‌شود.</p></li>
+<li><p>وقتی پاسخ مشتری به جای اتصال به گفت‌وگوی قبلی، یک رکورد جدید می‌سازد.</p></li>
+<li><p>وقتی loop یا bounce باعث رفتار غیرمنتظره می‌شود.</p></li>
+<li><p>وقتی می‌خواهید روی <code class="docutils literal notranslate"><span class="pre">message_new</span></code> یا <code class="docutils literal notranslate"><span class="pre">message_update</span></code> سفارشی‌سازی انجام دهید.</p></li>
+</ul>
+<p>پس هدف این بخش فقط معرفی چند متد نیست؛ هدف این است که منطق ذهنی پشت پردازش ایمیل در اودو
+را درک کنید.</p>
+</section>
+<section id="id3">
+<h2>نمای کلی معماری دریافت ایمیل<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>اودو به صورت پیش‌فرض از دو مسیر اصلی برای دریافت ایمیل استفاده می‌کند. ممکن است در یک
+پروژه واقعی فقط یکی از این مسیرها را ببینید، اما در نهایت هر دو به یک نقطه مشترک می‌رسند.</p>
+<p>مسیر اول، <strong>Pull-based</strong> است؛ یعنی اودو خودش به سرور ایمیل متصل می‌شود و پیام‌ها را
+واکشی می‌کند. این روش معمولاً با <code class="docutils literal notranslate"><span class="pre">IMAP</span></code> یا <code class="docutils literal notranslate"><span class="pre">POP</span></code> و از طریق <code class="docutils literal notranslate"><span class="pre">fetchmail</span></code> انجام می‌شود.</p>
+<p>مسیر دوم، <strong>Push-based</strong> است؛ یعنی یک سرویس خارجی یا Mail Transfer Agent مثل <code class="docutils literal notranslate"><span class="pre">Postfix</span></code>
+ایمیل را به اسکریپت اودو تحویل می‌دهد. در این حالت، اودو منتظر دریافت مستقیم پیام از ورودی
+استاندارد یا یک لایه واسط می‌ماند.</p>
+<p>با وجود تفاوت در نحوه ورود، مقصد نهایی هر دو مسیر یکسان است: متدی در مدل <code class="docutils literal notranslate"><span class="pre">mail.thread</span></code> که
+پردازش اصلی را شروع می‌کند.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">message_process</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">message</span><span class="p">,</span>
+    <span class="n">custom_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">save_original</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">strip_attachments</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">thread_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>این متد در فایل <code class="docutils literal notranslate"><span class="pre">mail/models/mail_thread.py</span></code> قرار دارد و می‌توان آن را نقطه ورود منطقی
+پردازش ایمیل در اودو دانست.</p>
+<img alt="نمای کلی فرآیند پردازش ایمیل‌های ورودی در اودو" class="align-center" src="../_images/mail.input.process.png" />
+</section>
+<section id="id4">
+<h2>دو مسیر اصلی ورود ایمیل<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="fetchmail">
+<h3>۱) دریافت از طریق <code class="docutils literal notranslate"><span class="pre">Fetchmail</span></code><a class="headerlink" href="#fetchmail" title="Link to this heading">#</a></h3>
+<p>در این روش، اودو به صندوق ایمیل متصل می‌شود و پیام‌ها را از سرور می‌خواند. این منطق در
+فایل <code class="docutils literal notranslate"><span class="pre">models/fetchmail.py</span></code> پیاده‌سازی شده و معمولاً با یک Scheduled Action اجرا می‌شود.</p>
+<p>متدهای مهم این مسیر:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fetchmail.server._fetch_mails()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fetchmail.server.fetch_mail()</span></code></p></li>
+</ul>
+<p>در عمل، رفتار کلی چنین است:</p>
+<ul class="simple">
+<li><p>در <code class="docutils literal notranslate"><span class="pre">IMAP</span></code> معمولاً ایمیل‌های خوانده‌نشده جست‌وجو می‌شوند.</p></li>
+<li><p>بدنه کامل ایمیل با قالب <code class="docutils literal notranslate"><span class="pre">RFC822</span></code> واکشی می‌شود.</p></li>
+<li><p>در <code class="docutils literal notranslate"><span class="pre">POP</span></code> پیام دریافت می‌شود و اگر پردازش موفق باشد، از سرور حذف می‌گردد.</p></li>
+<li><p>برای هر ایمیل، در نهایت <code class="docutils literal notranslate"><span class="pre">message_process()</span></code> فراخوانی می‌شود.</p></li>
+</ul>
+<p>دو مقدار context که در این مسیر زیاد دیده می‌شوند:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fetchmail_cron_running=True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_fetchmail_server_id=&lt;server.id&gt;</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">توجه</p>
+<p>در پردازش ایمیل‌های ورودی معمولاً هر پیام به صورت مستقل مدیریت می‌شود. دلیل این کار
+ساده است: اگر یکی از ایمیل‌ها خطا داشته باشد، نباید پردازش بقیه ایمیل‌ها از بین برود.
+به همین خاطر در بسیاری از جریان‌های fetchmail، پس از پردازش هر ایمیل، تغییرات همان
+پیام به صورت جداگانه commit می‌شود.</p>
+</div>
+</section>
+<section id="mailgate-mta-pipe">
+<h3>۲) دریافت از طریق <code class="docutils literal notranslate"><span class="pre">mailgate</span></code> یا MTA Pipe<a class="headerlink" href="#mailgate-mta-pipe" title="Link to this heading">#</a></h3>
+<p>در این روش، یک سرویس خارجی مثل <code class="docutils literal notranslate"><span class="pre">Postfix</span></code> یا هر Mail Transfer Agent دیگر، پیام را به اسکریپت
+اودو تحویل می‌دهد. این اسکریپت در فایل <code class="docutils literal notranslate"><span class="pre">static/scripts/odoo-mailgate.py</span></code> قرار دارد.</p>
+<p>جریان کلی این روش:</p>
+<ul class="simple">
+<li><p>ایمیل خام از <code class="docutils literal notranslate"><span class="pre">stdin</span></code> خوانده می‌شود.</p></li>
+<li><p>با استفاده از <code class="docutils literal notranslate"><span class="pre">XML-RPC</span></code> به اودو ارسال می‌گردد.</p></li>
+<li><p>روی مدل <code class="docutils literal notranslate"><span class="pre">mail.thread</span></code> متد <code class="docutils literal notranslate"><span class="pre">message_process</span></code> اجرا می‌شود.</p></li>
+</ul>
+<p>مزیت این مسیر این است که لازم نیست اودو خودش صندوق ایمیل را به صورت دوره‌ای واکشی کند؛
+بلکه پیام‌ها به محض رسیدن، به سمت اودو هدایت می‌شوند.</p>
+</section>
+</section>
+<section id="id5">
+<h2>تصویر ساده‌شده از کل جریان<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>اگر بخواهیم کل فرآیند را خیلی ساده بیان کنیم، مسیر پردازش ایمیل در اودو معمولاً از این
+مراحل عبور می‌کند:</p>
+<ol class="arabic simple">
+<li><p>دریافت ایمیل خام از یک منبع بیرونی</p></li>
+<li><p>تبدیل ایمیل خام به یک ساختار استاندارد داخلی</p></li>
+<li><p>کنترل اولیه برای جلوگیری از تکرار، loop و پیام‌های نامعتبر</p></li>
+<li><p>پیدا کردن مقصد مناسب پیام</p></li>
+<li><p>بررسی امنیت و اعتبار مسیر انتخاب‌شده</p></li>
+<li><p>ایجاد یا به‌روزرسانی رکورد و ثبت پیام در Chatter</p></li>
+</ol>
+<p>در ادامه، هر کدام از این مراحل را جداگانه بررسی می‌کنیم.</p>
+</section>
+<section id="id6">
+<h2>فاز اول: دریافت پیام خام<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>در این فاز، اودو هنوز معنای تجاری ایمیل را نمی‌فهمد. فقط یک پیام خام در اختیار دارد که باید
+برای تحلیل آماده شود.</p>
+<p>در این لحظه معمولاً داده به یکی از این شکل‌ها وارد می‌شود:</p>
+<ul class="simple">
+<li><p>بایت‌های خام ایمیل از سرور <code class="docutils literal notranslate"><span class="pre">IMAP</span></code> یا <code class="docutils literal notranslate"><span class="pre">POP</span></code></p></li>
+<li><p>متن کامل یک ایمیل استاندارد <code class="docutils literal notranslate"><span class="pre">RFC822</span></code></p></li>
+<li><p>داده‌ای که از طریق اسکریپت mailgate به اودو رسیده است</p></li>
+</ul>
+<p>این مرحله بیشتر جنبه «انتقال» دارد تا «تحلیل». اما از نظر عملیاتی بسیار مهم است، چون اگر
+در همین بخش اتصال سرور، احراز هویت یا خواندن پیام با خطا مواجه شود، هیچ‌کدام از مراحل بعدی
+اجرا نخواهند شد.</p>
+<p>برای یک مبتدی، خوب است این تفاوت را به خاطر بسپارد:</p>
+<ul class="simple">
+<li><p><strong>دریافت ایمیل</strong> یعنی اودو پیام را از بیرون بگیرد.</p></li>
+<li><p><strong>پردازش ایمیل</strong> یعنی اودو تصمیم بگیرد با آن پیام چه کار کند.</p></li>
+</ul>
+</section>
+<section id="message-dict">
+<h2>فاز دوم: نرمال‌سازی پیام و ساخت <code class="docutils literal notranslate"><span class="pre">message_dict</span></code><a class="headerlink" href="#message-dict" title="Link to this heading">#</a></h2>
+<p>بعد از دریافت پیام خام، اودو باید آن را به یک ساختار داده‌ای استاندارد تبدیل کند؛ ساختاری
+که همه بخش‌های بعدی بتوانند با آن کار کنند. این کار معمولاً با متد زیر انجام می‌شود:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mail.thread.message_parse(message,</span> <span class="pre">save_original=False)</span></code></p>
+<p>خروجی این متد معمولاً یک دیکشنری است که می‌توان آن را قلب جریان پردازش ایمیل دانست.</p>
+<p>چرا این مرحله مهم است؟ چون ایمیل خام، ترکیبی از headerها، body، attachmentها، metadata و
+اطلاعات فنی دیگر است. اگر این داده‌ها یک‌دست نشوند، تصمیم‌گیری در مراحل بعدی بسیار سخت
+خواهد شد.</p>
+<p>مهم‌ترین داده‌هایی که در این مرحله استخراج می‌شوند:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">message_id</span></code> برای شناسایی یکتای پیام</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subject</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">email_from</span></code> یا فرستنده اصلی</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to</span></code> و <code class="docutils literal notranslate"><span class="pre">cc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recipients</span></code> به عنوان فهرست گیرندگان واقعی</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">references</span></code> و <code class="docutils literal notranslate"><span class="pre">in_reply_to</span></code> برای تشخیص reply</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">body</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">attachments</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partner_ids</span></code> در صورت امکان، بر اساس آدرس‌های ایمیل شناخته‌شده</p></li>
+<li><p>داده‌های مربوط به bounce در صورت تشخیص</p></li>
+</ul>
+<section id="id7">
+<h3>استخراج متن و فایل‌های ضمیمه<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>درون این مرحله، متدهایی مثل <code class="docutils literal notranslate"><span class="pre">_message_parse_extract_payload</span></code> نقش مهمی دارند. این متدها
+به اودو کمک می‌کنند بدنه ایمیل را از attachmentها و سایر بخش‌های multipart جدا کند.</p>
+<p>رفتار معمول اودو در این بخش:</p>
+<ul class="simple">
+<li><p>اگر پیام <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> باشد، برای نمایش مناسب معمولاً به HTML تبدیل می‌شود.</p></li>
+<li><p>اگر پیام <code class="docutils literal notranslate"><span class="pre">text/html</span></code> باشد، یک sanitize اولیه روی آن انجام می‌شود.</p></li>
+<li><p>اگر ایمیل multipart باشد، بخش‌های inline و attachment از هم تفکیک می‌شوند.</p></li>
+<li><p>اگر <code class="docutils literal notranslate"><span class="pre">save_original=True</span></code> باشد، نسخه اصلی ایمیل هم می‌تواند به صورت فایل
+<code class="docutils literal notranslate"><span class="pre">original_email.eml</span></code> ذخیره شود.</p></li>
+</ul>
+<p>این یعنی وقتی شما در Chatter یک ایمیل دریافتی را می‌بینید، آن چیزی که نمایش داده می‌شود
+نتیجه یک مرحله تبدیل و پاک‌سازی است، نه لزوماً متن خام اولیه.</p>
+</section>
+<section id="bounce">
+<h3>تشخیص پیام‌های Bounce<a class="headerlink" href="#bounce" title="Link to this heading">#</a></h3>
+<p>همه ایمیل‌های ورودی، ایمیل‌های واقعی کاربران نیستند. بعضی از آن‌ها پیام‌های بازگشتی سرور
+ایمیل هستند؛ مثل وقتی که یک ایمیل به مقصد نمی‌رسد و سرور، گزارش خطا برمی‌گرداند.</p>
+<p>اودو تلاش می‌کند این نوع ایمیل‌ها را از همان ابتدا تشخیص دهد. برای این کار، متدهایی مانند
+<code class="docutils literal notranslate"><span class="pre">_message_parse_extract_bounce</span></code> و <code class="docutils literal notranslate"><span class="pre">_detect_is_bounce</span></code> استفاده می‌شوند.</p>
+<p>نشانه‌های رایج برای تشخیص bounce:</p>
+<ul class="simple">
+<li><p>فرستنده‌هایی مثل <code class="docutils literal notranslate"><span class="pre">mailer-daemon</span></code></p></li>
+<li><p>content-type هایی مثل <code class="docutils literal notranslate"><span class="pre">multipart/report</span></code> یا <code class="docutils literal notranslate"><span class="pre">delivery-status</span></code></p></li>
+<li><p>مقصدی که به bounce alias مربوط باشد</p></li>
+</ul>
+<p>اگر پیام bounce تشخیص داده شود، اودو به آن مثل یک پیام عادی رفتار نمی‌کند. این موضوع در
+فاز routing اهمیت زیادی پیدا می‌کند.</p>
+</section>
+</section>
+<section id="id8">
+<h2>فاز سوم: کنترل‌های اولیه قبل از مسیریابی<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>بعد از اینکه داده‌های ایمیل به ساختار استاندارد تبدیل شد، اودو هنوز مستقیم سراغ ساخت رکورد
+نمی‌رود. اول چند کنترل مهم انجام می‌دهد تا مطمئن شود ادامه پردازش، منطقی و امن است.</p>
+<section id="id9">
+<h3>۱) جلوگیری از پردازش تکراری<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>معمولاً کلید اصلی برای تشخیص تکراری بودن پیام، <code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> است. اگر اودو قبلاً پیامی با
+همان <code class="docutils literal notranslate"><span class="pre">message_id</span></code> را پردازش کرده باشد، احتمال زیادی وجود دارد که این پیام تکراری باشد.</p>
+<p>اهمیت این موضوع در سیستم‌های ایمیلی بسیار زیاد است، چون تکرار در دریافت ایمیل اتفاقی رایج
+است؛ به‌خصوص وقتی timeout، retry یا اختلال‌های شبکه وجود داشته باشد.</p>
+</section>
+<section id="loop-header">
+<h3>۲) جلوگیری از Loop در سطح Header<a class="headerlink" href="#loop-header" title="Link to this heading">#</a></h3>
+<p>گاهی پیام‌ها بین چند سیستم رفت‌وبرگشت می‌کنند و یک حلقه ناخواسته می‌سازند. برای مثال:</p>
+<ul class="simple">
+<li><p>اودو ایمیلی می‌فرستد.</p></li>
+<li><p>یک سرور واسط پاسخی خودکار برمی‌گرداند.</p></li>
+<li><p>آن پاسخ دوباره وارد اودو می‌شود.</p></li>
+<li><p>اودو آن را مثل یک رویداد جدید پردازش می‌کند.</p></li>
+</ul>
+<p>اگر جلوی این وضعیت گرفته نشود، یک چرخه بی‌پایان شکل می‌گیرد. متدهایی مثل
+<code class="docutils literal notranslate"><span class="pre">_detect_loop_headers</span></code> برای تشخیص این الگوها استفاده می‌شوند.</p>
+</section>
+<section id="loop">
+<h3>۳) جلوگیری از Loop در سطح نرخ ارسال<a class="headerlink" href="#loop" title="Link to this heading">#</a></h3>
+<p>بعضی loopها فقط از روی header قابل تشخیص نیستند. برای همین اودو رفتار فرستنده را هم در یک
+بازه زمانی بررسی می‌کند. متدی مثل <code class="docutils literal notranslate"><span class="pre">_detect_loop_sender</span></code> تعداد پیام‌های نزدیک به هم از یک
+فرستنده را تحلیل می‌کند.</p>
+<p>چند پارامتر مهم در این بخش:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mail.gateway.loop.minutes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail.gateway.loop.threshold</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail.gateway.allowed</span></code></p></li>
+</ul>
+<p>به زبان ساده، اگر از یک فرستنده در مدت کوتاه تعداد زیادی پیام غیرعادی برسد، اودو ممکن است
+آن را نشانه loop یا misuse در نظر بگیرد.</p>
+</section>
+</section>
+<section id="id10">
+<h2>فاز چهارم: مسیریابی پیام<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>تا اینجا اودو می‌داند با یک ایمیل سالم یا ناسالم مواجه است، اما هنوز نمی‌داند این پیام باید
+به کجا برود. مرحله routing دقیقاً برای پاسخ دادن به همین سؤال است.</p>
+<p>متد کلیدی این بخش:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mail.thread.message_route(message,</span> <span class="pre">message_dict,</span> <span class="pre">model=None,</span> <span class="pre">thread_id=None,</span> <span class="pre">custom_values=None)</span></code></p>
+<p>خروجی این متد معمولاً فهرستی از routeها است. هر route به اودو می‌گوید این ایمیل باید روی
+کدام مدل یا رکورد اعمال شود و با چه کاربری پردازش گردد.</p>
+<p>فرم مفهومی هر route به این صورت است:</p>
+<p><code class="docutils literal notranslate"><span class="pre">(model,</span> <span class="pre">thread_id,</span> <span class="pre">custom_values,</span> <span class="pre">user_id,</span> <span class="pre">alias_record)</span></code></p>
+<section id="id11">
+<h3>اودو در این مرحله چه تصمیمی می‌گیرد؟<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>به صورت ساده، اودو یکی از این چند سناریو را دنبال می‌کند:</p>
+<ul class="simple">
+<li><p>پیام، یک <code class="docutils literal notranslate"><span class="pre">bounce</span></code> است.</p></li>
+<li><p>پیام، پاسخ به یک گفت‌وگوی موجود است.</p></li>
+<li><p>پیام، به یک <code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Alias</span></code> تعلق دارد.</p></li>
+<li><p>پیام، با یک مدل fallback پردازش می‌شود.</p></li>
+<li><p>پیام، مستقیماً به catchall رسیده و عملاً قابل مسیریابی نیست.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>سناریوی اول: پیام Bounce است<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>اگر اودو تشخیص دهد که پیام یک bounce است، معمولاً از مسیرهای عادی عبور نمی‌کند. در این حالت
+تمرکز سیستم روی ثبت بازخورد مربوط به ارسال ناموفق است، نه ایجاد یک رکورد تجاری جدید.</p>
+<p>در اینجا متدهایی مثل <code class="docutils literal notranslate"><span class="pre">_routing_handle_bounce</span></code> وارد عمل می‌شوند.</p>
+</section>
+<section id="thread">
+<h3>سناریوی دوم: پیام پاسخ به یک Thread موجود است<a class="headerlink" href="#thread" title="Link to this heading">#</a></h3>
+<p>این یکی از رایج‌ترین حالت‌هاست. فرض کنید از داخل Chatter برای مشتری ایمیلی فرستاده‌اید و
+مشتری مستقیماً به همان ایمیل پاسخ داده است. اودو باید بفهمد این پیام جدید نیست، بلکه ادامه
+همان گفت‌وگوی قبلی است.</p>
+<p>برای این تشخیص، داده‌هایی مثل <code class="docutils literal notranslate"><span class="pre">References</span></code> و <code class="docutils literal notranslate"><span class="pre">In-Reply-To</span></code> بررسی می‌شوند. اگر اودو بتواند
+بین ایمیل ورودی و یک <code class="docutils literal notranslate"><span class="pre">mail.message</span></code> قبلی ارتباط برقرار کند، route به همان مدل و همان رکورد
+هدایت می‌شود.</p>
+<p>به زبان ساده:</p>
+<ul class="simple">
+<li><p>اگر پیام reply باشد، معمولاً رکورد جدید ساخته نمی‌شود.</p></li>
+<li><p>پیام جدید به تاریخچه همان رکورد اضافه می‌گردد.</p></li>
+</ul>
+</section>
+<section id="alias">
+<h3>سناریوی سوم: پیام به یک Alias مربوط است<a class="headerlink" href="#alias" title="Link to this heading">#</a></h3>
+<p>اگر ایمیل reply به یک thread موجود نباشد، اودو بررسی می‌کند آیا گیرنده ایمیل با یکی از
+aliasهای تعریف‌شده در سیستم تطبیق دارد یا نه.</p>
+<p>برای مثال، فرض کنید این آدرس را در اودو تعریف کرده‌اید:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sale@odoonix.ir
+</pre></div>
+</div>
+<p>اگر یک ایمیل تازه به این آدرس برسد، اودو بررسی می‌کند که این alias به کدام مدل مرتبط است.
+مثلاً ممکن است این alias برای ساخت سرنخ در CRM یا ایجاد درخواست در Helpdesk تعریف شده باشد.</p>
+<p>در این بخش معمولاً مواردی مثل این بررسی می‌شوند:</p>
+<ul class="simple">
+<li><p>گیرندگان واقعی پیام</p></li>
+<li><p>نام کامل alias</p></li>
+<li><p>local-part ایمیل در بعضی تنظیمات</p></li>
+<li><p>کاربری که باید پردازش را انجام دهد</p></li>
+<li><p>اعتبار route نهایی</p></li>
+</ul>
+<p>پس alias در عمل یک «قانون تبدیل ایمیل به رکورد» است.</p>
+</section>
+<section id="fallback-model">
+<h3>سناریوی چهارم: استفاده از Fallback Model<a class="headerlink" href="#fallback-model" title="Link to this heading">#</a></h3>
+<p>گاهی پیام نه bounce است، نه reply، و نه با alias مشخصی تطبیق دارد. در این شرایط، اگر برای
+پردازش یک مدل fallback تعریف شده باشد، اودو می‌تواند پیام را به آن مدل هدایت کند.</p>
+<p>این حالت بیشتر در سناریوهای سفارشی یا gatewayهای کنترل‌شده کاربرد دارد.</p>
+</section>
+<section id="catchall">
+<h3>سناریوی پنجم: Catchall یا پیام غیرقابل مسیریابی<a class="headerlink" href="#catchall" title="Link to this heading">#</a></h3>
+<p>اگر ایمیل مستقیماً به catchall برسد، معمولاً به این معناست که مقصد اصلی آن مشخص نبوده یا
+سرور ایمیل آن را به عنوان پیام بدون مقصد معتبر هدایت کرده است. در چنین شرایطی، پیام اغلب
+به عنوان bounce یا پیام غیرقابل مسیریابی بررسی می‌شود، نه به عنوان یک ایمیل عادی برای ایجاد
+رکورد جدید.</p>
+</section>
+<section id="route">
+<h3>سناریوی ششم: هیچ route معتبری پیدا نشود<a class="headerlink" href="#route" title="Link to this heading">#</a></h3>
+<p>اگر هیچ‌کدام از شرایط بالا برقرار نباشد، اودو در نهایت به این نتیجه می‌رسد که برای این
+پیام، مسیر معتبری وجود ندارد. در این حالت، پردازش با خطا یا توقف کنترل‌شده روبه‌رو می‌شود.</p>
+</section>
+</section>
+<section id="id13">
+<h2>فاز پنجم: اعتبارسنجی مسیر و کنترل امنیت<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>پیدا کردن route به تنهایی کافی نیست. اودو هنوز باید مطمئن شود این route از نظر فنی و امنیتی
+معتبر است. این مرحله معمولاً با متدی مانند <code class="docutils literal notranslate"><span class="pre">_routing_check_route</span></code> انجام می‌شود.</p>
+<p>در این بخش، چند سؤال مهم بررسی می‌شود:</p>
+<ul class="simple">
+<li><p>آیا مدل مقصد واقعاً وجود دارد؟</p></li>
+<li><p>اگر <code class="docutils literal notranslate"><span class="pre">thread_id</span></code> وجود دارد، آیا رکورد مقصد هنوز موجود است؟</p></li>
+<li><p>آیا مدل مقصد از پردازش ایمیل پشتیبانی می‌کند؟</p></li>
+<li><p>آیا فرستنده اجازه ایجاد یا به‌روزرسانی چنین رکوردی را دارد؟</p></li>
+</ul>
+<p>در اینجا دو متد بسیار مهم هستند:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">message_new</span></code> برای زمانی که باید رکورد جدید ساخته شود</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_update</span></code> برای زمانی که باید رکورد موجود به‌روزرسانی شود</p></li>
+</ul>
+<p>اگر مدلی این رفتارها را نداشته باشد، route هرچند ظاهراً پیدا شده، در عمل قابل استفاده
+نخواهد بود.</p>
+<section id="id14">
+<h3>امنیت Alias چگونه کنترل می‌شود؟<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>Aliasها می‌توانند سیاست‌های امنیتی متفاوتی داشته باشند. بسته به تنظیمات، ممکن است فقط این
+گروه‌ها اجازه استفاده از یک alias را داشته باشند:</p>
+<ul class="simple">
+<li><p><strong>everyone</strong>: همه فرستندگان</p></li>
+<li><p><strong>partners</strong>: فقط مخاطبان ثبت‌شده در اودو</p></li>
+<li><p><strong>followers</strong>: فقط دنبال‌کنندگان رکورد مرتبط</p></li>
+</ul>
+<p>اگر فرستنده با سیاست امنیتی alias سازگار نباشد، route رد می‌شود. در بعضی موارد، اودو حتی
+می‌تواند ایمیل bounce مناسب برگرداند تا به فرستنده اطلاع دهد پیام او پذیرفته نشده است.</p>
+</section>
+</section>
+<section id="id15">
+<h2>فاز ششم: اجرای route و ثبت پیام<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p>اگر همه مراحل قبلی با موفقیت عبور کنند، حالا وقت اجرای route است. این بخش معمولاً در
+متدهایی مثل <code class="docutils literal notranslate"><span class="pre">_message_route_process</span></code> انجام می‌شود.</p>
+<p>در این مرحله، اودو با توجه به نوع route یکی از این دو کار اصلی را انجام می‌دهد:</p>
+<ul class="simple">
+<li><p>یک رکورد موجود را به‌روزرسانی می‌کند.</p></li>
+<li><p>یک رکورد جدید می‌سازد.</p></li>
+</ul>
+<p>منطق کلی اجرا به این صورت است:</p>
+<ol class="arabic simple">
+<li><p>کاربر اجرایی route تعیین می‌شود.</p></li>
+<li><p>اگر <code class="docutils literal notranslate"><span class="pre">thread_id</span></code> وجود داشته باشد، <code class="docutils literal notranslate"><span class="pre">message_update</span></code> روی رکورد اجرا می‌شود.</p></li>
+<li><p>اگر رکوردی وجود نداشته باشد، <code class="docutils literal notranslate"><span class="pre">message_new</span></code> برای ساخت رکورد تازه فراخوانی می‌شود.</p></li>
+<li><p>پس از آن، پیام نهایی در Chatter یا سیستم اعلان ثبت می‌شود.</p></li>
+</ol>
+<p>در مدل‌های مختلف، ثبت پیام معمولاً با یکی از این دو مسیر انجام می‌شود:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">message_post</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_notify</span></code></p></li>
+</ul>
+<p>اینجاست که کاربر برای اولین بار نتیجه پردازش را در رابط اودو می‌بیند.</p>
+</section>
+<section id="message-new-message-update">
+<h2>رفتار پیش‌فرض <code class="docutils literal notranslate"><span class="pre">message_new</span></code> و <code class="docutils literal notranslate"><span class="pre">message_update</span></code><a class="headerlink" href="#message-new-message-update" title="Link to this heading">#</a></h2>
+<p>برای یک توسعه‌دهنده، دانستن رفتار پیش‌فرض این دو متد بسیار مهم است؛ چون بسیاری از ماژول‌های
+کسب‌وکاری دقیقاً همین‌جا سفارشی‌سازی می‌کنند.</p>
+<p>رفتار معمول <code class="docutils literal notranslate"><span class="pre">message_new</span></code> در <code class="docutils literal notranslate"><span class="pre">mail.thread</span></code>:</p>
+<ul class="simple">
+<li><p>یک رکورد جدید ایجاد می‌کند.</p></li>
+<li><p>اگر مدل فیلد نام داشته باشد، معمولاً <code class="docutils literal notranslate"><span class="pre">subject</span></code> را به عنوان مقدار اولیه استفاده می‌کند.</p></li>
+<li><p>در صورت امکان، ایمیل اصلی را در یکی از فیلدهای مناسب قرار می‌دهد.</p></li>
+</ul>
+<p>رفتار معمول <code class="docutils literal notranslate"><span class="pre">message_update</span></code>:</p>
+<ul class="simple">
+<li><p>اگر لازم باشد روی رکورد موجود <code class="docutils literal notranslate"><span class="pre">write</span></code> انجام می‌دهد.</p></li>
+<li><p>در ساده‌ترین حالت، فقط پیام جدید را به thread موجود اضافه می‌کند.</p></li>
+</ul>
+<p>در ماژول‌های واقعی مثل CRM، Helpdesk یا Recruitment، معمولاً این دو متد override می‌شوند تا
+رفتار دقیق‌تر و تجاری‌تری پیاده شود.</p>
+</section>
+<section id="id16">
+<h2>یک مثال ذهنی ساده<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p>فرض کنید در شرکت شما alias زیر تعریف شده است:</p>
+<p><code class="docutils literal notranslate"><span class="pre">jobs&#64;mycompany.com</span></code></p>
+<p>این alias به مدل <code class="docutils literal notranslate"><span class="pre">hr.applicant</span></code> متصل است. حالا یک متقاضی رزومه خود را به این آدرس ارسال
+می‌کند. اودو تقریباً چنین مسیری را طی می‌کند:</p>
+<ol class="arabic simple">
+<li><p>ایمیل از سرور دریافت می‌شود.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_parse</span></code> اطلاعاتی مثل subject، from، body و attachment را استخراج می‌کند.</p></li>
+<li><p>بررسی می‌شود که ایمیل تکراری یا loop نباشد.</p></li>
+<li><p>سیستم متوجه می‌شود گیرنده با alias <code class="docutils literal notranslate"><span class="pre">jobs</span></code> تطبیق دارد.</p></li>
+<li><p>route اعتبارسنجی می‌شود.</p></li>
+<li><p>متد <code class="docutils literal notranslate"><span class="pre">message_new</span></code> روی مدل <code class="docutils literal notranslate"><span class="pre">hr.applicant</span></code> اجرا می‌شود.</p></li>
+<li><p>یک رکورد متقاضی جدید ساخته می‌شود.</p></li>
+<li><p>پیام اصلی و رزومه در Chatter یا attachmentهای رکورد ثبت می‌شوند.</p></li>
+</ol>
+<p>این مثال، منطق کلی mail gateway را بسیار ملموس‌تر می‌کند.</p>
+</section>
+<section id="id17">
+<h2>اگر بخواهید این جریان را دیباگ کنید<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>وقتی در پروژه واقعی مشکلی در پردازش ایمیل می‌بینید، بهتر است تحلیل را از این نقاط شروع کنید:</p>
+<ul class="simple">
+<li><p>آیا ایمیل اصلاً به اودو رسیده است؟</p></li>
+<li><p>آیا <code class="docutils literal notranslate"><span class="pre">message_process</span></code> فراخوانی شده است؟</p></li>
+<li><p>آیا <code class="docutils literal notranslate"><span class="pre">message_parse</span></code> داده‌های لازم را درست استخراج کرده است؟</p></li>
+<li><p>آیا پیام به عنوان duplicate یا loop رد شده است؟</p></li>
+<li><p>آیا route مناسب پیدا شده است؟</p></li>
+<li><p>آیا <code class="docutils literal notranslate"><span class="pre">_routing_check_route</span></code> آن route را معتبر دانسته است؟</p></li>
+<li><p>آیا <code class="docutils literal notranslate"><span class="pre">message_new</span></code> یا <code class="docutils literal notranslate"><span class="pre">message_update</span></code> در مدل مقصد override شده‌اند؟</p></li>
+</ul>
+<p>متدهایی که معمولاً در دیباگ بیشترین ارزش را دارند:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">message_process</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_parse</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_route</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_routing_check_route</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_message_route_process</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_new</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message_update</span></code></p></li>
+</ul>
+<p>اگر این نقاط را بشناسید، تحلیل بسیاری از خطاهای ایمیل در اودو بسیار سریع‌تر می‌شود.</p>
+</section>
+<section id="id18">
+<h2>نکات مهم برای توسعه‌دهندگان<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<p>اگر قرار است ماژولی بنویسید که از ایمیل‌های ورودی استفاده می‌کند، این نکات را در نظر بگیرید:</p>
+<ul class="simple">
+<li><p>از override کردن بی‌دلیل متدهای مرکزی <code class="docutils literal notranslate"><span class="pre">mail.thread</span></code> پرهیز کنید.</p></li>
+<li><p>تا حد امکان رفتار سفارشی را در <code class="docutils literal notranslate"><span class="pre">message_new</span></code> و <code class="docutils literal notranslate"><span class="pre">message_update</span></code> مدل مقصد پیاده کنید.</p></li>
+<li><p>سناریوهای reply و new message را جداگانه تست کنید.</p></li>
+<li><p>همیشه روی attachmentها، body HTML و فرستنده‌های ناشناس حساس باشید.</p></li>
+<li><p>برای aliasها سیاست امنیتی روشن تعریف کنید.</p></li>
+<li><p>وضعیت bounce و loop را در سناریوهای تولیدی جدی بگیرید.</p></li>
+</ul>
+</section>
+<section id="id19">
+<h2>جمع‌بندی<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<p>پردازش ایمیل ورودی در اودو یک pipeline چندمرحله‌ای و حساب‌شده است. این pipeline از دریافت
+ایمیل خام شروع می‌شود، سپس پیام را به یک ساختار استاندارد تبدیل می‌کند، کنترل‌های اولیه را
+انجام می‌دهد، مقصد مناسب را پیدا می‌کند، اعتبار و امنیت مسیر را می‌سنجد و در نهایت رکوردی
+را ایجاد یا به‌روزرسانی می‌کند.</p>
+<p>اگر بخواهیم کل منطق را در یک جمله خلاصه کنیم، می‌توان گفت:</p>
+<p><strong>اودو هر ایمیل ورودی را اول می‌فهمد، بعد تصمیم می‌گیرد، و تازه در مرحله آخر آن را به عمل
+تبدیل می‌کند.</strong></p>
+<p>همین طراحی چندمرحله‌ای است که باعث می‌شود mail gateway اودو هم توسعه‌پذیر باشد، هم در برابر
+خطاهای رایج مقاوم بماند، و هم بتواند در ماژول‌های مختلف کسب‌وکاری رفتارهای متفاوتی ارائه دهد.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">قبلی</p>
+        <p class="prev-next-title">دیباچه</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="incoming-email-configuration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">بعدی</p>
+        <p class="prev-next-title">پیکربندی ایمیل ورودی</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">چرا شناخت این جریان مهم است؟</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">نمای کلی معماری دریافت ایمیل</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">دو مسیر اصلی ورود ایمیل</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fetchmail">۱) دریافت از طریق <code class="docutils literal notranslate"><span class="pre">Fetchmail</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mailgate-mta-pipe">۲) دریافت از طریق <code class="docutils literal notranslate"><span class="pre">mailgate</span></code> یا MTA Pipe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">تصویر ساده‌شده از کل جریان</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">فاز اول: دریافت پیام خام</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-dict">فاز دوم: نرمال‌سازی پیام و ساخت <code class="docutils literal notranslate"><span class="pre">message_dict</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">استخراج متن و فایل‌های ضمیمه</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounce">تشخیص پیام‌های Bounce</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">فاز سوم: کنترل‌های اولیه قبل از مسیریابی</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">۱) جلوگیری از پردازش تکراری</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-header">۲) جلوگیری از Loop در سطح Header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop">۳) جلوگیری از Loop در سطح نرخ ارسال</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">فاز چهارم: مسیریابی پیام</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">اودو در این مرحله چه تصمیمی می‌گیرد؟</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">سناریوی اول: پیام Bounce است</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread">سناریوی دوم: پیام پاسخ به یک Thread موجود است</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alias">سناریوی سوم: پیام به یک Alias مربوط است</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fallback-model">سناریوی چهارم: استفاده از Fallback Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catchall">سناریوی پنجم: Catchall یا پیام غیرقابل مسیریابی</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#route">سناریوی ششم: هیچ route معتبری پیدا نشود</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">فاز پنجم: اعتبارسنجی مسیر و کنترل امنیت</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">امنیت Alias چگونه کنترل می‌شود؟</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">فاز ششم: اجرای route و ثبت پیام</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-new-message-update">رفتار پیش‌فرض <code class="docutils literal notranslate"><span class="pre">message_new</span></code> و <code class="docutils literal notranslate"><span class="pre">message_update</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">یک مثال ذهنی ساده</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">اگر بخواهید این جریان را دیباگ کنید</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">نکات مهم برای توسعه‌دهندگان</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">جمع‌بندی</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright اودوونیکس ۱۴۰۴.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    ایجاد شده با<a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

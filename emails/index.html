@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/logo.png"/>
     <link rel="index" title="فهرست" href="../genindex.html" />
     <link rel="search" title="جستجو" href="../search.html" />
-    <link rel="next" title="پیکربندی ایمیل ورودی" href="incoming-email-configuration.html" />
+    <link rel="next" title="دیباچه" href="introduction.html" />
     <link rel="prev" title="TODO" href="../performance-optimisation/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fa"/>
@@ -656,12 +656,18 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">دیباچه</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inbound_flow_analysis.html">فرآیند پردازش ایمیل‌های ورودی</a></li>
 <li class="toctree-l1"><a class="reference internal" href="incoming-email-configuration.html">پیکربندی ایمیل ورودی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="outgoing-email-configuration.html">پیکربندی ایمیل خروجی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chatter.html">Chatter — ابزار ارتباطی درون اودو</a></li>
 <li class="toctree-l1"><a class="reference internal" href="activity.html">فعالیت‌ها (Activity)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a></li>
-<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="periodic-digest-emails.html">ایمیل‌های خلاصه دوره‌ای (Periodic Digest Emails)</a></li>
 </ul>
 </div>
@@ -739,20 +745,102 @@
                   
   <section id="id1">
 <h1>ایمیل در اودو ۱۸<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>ایمیل یکی از اساسی‌ترین ابزارهای ارتباطی در هر سیستم ERP است. اودو قابلیت‌های جامعی برای مدیریت ایمیل فراهم می‌کند؛ از پیکربندی سرورهای ورودی و خروجی گرفته تا ارسال ایمیل با قالب‌های QWeb و دریافت خودکار ایمیل از طریق Email Alias.</p>
-<p>در این فصل با موضوعات زیر آشنا می‌شوید:</p>
+<p>در اودو، ایمیل فقط یک ابزار برای ارسال و دریافت پیام نیست؛ بلکه بخشی از هسته ارتباطات
+سیستم است. بسیاری از قابلیت‌های مهم اودو مانند <code class="docutils literal notranslate"><span class="pre">Chatter</span></code>، ثبت خودکار پیام روی رکوردها،
+ایجاد درخواست از طریق <code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Alias</span></code>، اعلان‌ها، فعالیت‌ها و حتی بخشی از گردش‌کارهای
+پشتیبانی و فروش، بر پایه همین زیرساخت کار می‌کنند.</p>
+<p>به همین دلیل، شناخت قابلیت‌های ایمیل در اودو فقط برای مدیر سیستم مهم نیست؛ برای
+توسعه‌دهنده، تحلیل‌گر و حتی کاربری که می‌خواهد رفتار سیستم را بهتر درک کند نیز ضروری است.</p>
+<p>در این فصل، تلاش می‌کنیم تصویری منسجم از نقش ایمیل در اودو ۱۸ ارائه دهیم؛ از درک معماری
+پردازش پیام‌های ورودی گرفته تا پیکربندی سرورهای ایمیل، ارسال پیام با قالب‌های قابل‌توسعه و
+استفاده از ابزارهای جانبی مرتبط با ارتباطات درون سیستم.</p>
+<p>به طور کلی، مباحث این فصل در سه بخش اصلی تنظیم شده‌اند:</p>
 <ul class="simple">
-<li><p><strong>پیکربندی ایمیل ورودی و خروجی:</strong> چگونه اودو را به سرور ایمیل متصل کنیم تا پیام‌ها مستقیماً درون سیستم دریافت و ارسال شوند.</p></li>
-<li><p><strong>Chatter:</strong> ابزار داخلی اودو برای ارتباط تیمی روی رکوردها — بدون نیاز به خروج از سیستم.</p></li>
-<li><p><strong>فعالیت‌ها (Activity):</strong> برنامه‌ریزی وظایف و پیگیری‌های مرتبط با هر رکورد.</p></li>
-<li><p><strong>قالب‌های ایمیل QWeb:</strong> ساخت و ارسال ایمیل‌های زیبا و یکپارچه با استفاده از قالب‌های XML.</p></li>
-<li><p><strong>Email Alias:</strong> تبدیل خودکار ایمیل‌های دریافتی به رکورد در پایگاه داده اودو.</p></li>
-<li><p><strong>ایمیل‌های دوره‌ای (Digest Emails):</strong> ارسال خلاصه‌های آماری منظم به اعضای تیم.</p></li>
+<li><dl class="simple">
+<dt><strong>بخش اول: پردازش ایمیل‌های ورودی</strong></dt><dd><p>در این بخش بررسی می‌کنیم که ایمیل چگونه وارد اودو می‌شود، چگونه تحلیل می‌شود و چطور به
+یک رکورد جدید یا یک گفت‌وگوی موجود متصل می‌گردد.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>بخش دوم: ارسال ایمیل</strong></dt><dd><p>در این بخش با پیکربندی سرورهای خروجی و ساخت و استفاده از قالب‌های ایمیل آشنا می‌شوید تا
+بتوانید پیام‌های حرفه‌ای و ساخت‌یافته از داخل اودو ارسال کنید.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>بخش سوم: ابزارها و قابلیت‌های مکمل</strong></dt><dd><p>در این بخش امکاناتی مانند <code class="docutils literal notranslate"><span class="pre">Chatter</span></code>، فعالیت‌ها و ایمیل‌های دوره‌ای را بررسی می‌کنیم؛
+قابلیت‌هایی که ارتباطات روزمره در اودو را کامل‌تر و کاربردی‌تر می‌کنند.</p>
+</dd>
+</dl>
+</li>
 </ul>
+<p>موضوعاتی که در این فصل خواهید خواند شامل این موارد است:</p>
+<ul class="simple">
+<li><p><strong>مقدمه و نگاه کلی به ایمیل در اودو:</strong> درک جایگاه ماژول <cite>mail</cite> در معماری ارتباطات سیستم.</p></li>
+<li><p><strong>تحلیل جریان ایمیل ورودی:</strong> از لحظه دریافت پیام خام تا routing، کنترل امنیت و ثبت نهایی.</p></li>
+<li><p><strong>پیکربندی ایمیل ورودی:</strong> اتصال اودو به صندوق‌های ایمیل برای واکشی پیام‌های جدید.</p></li>
+<li><p><strong>Email Alias:</strong> تبدیل مستقیم ایمیل‌های دریافتی به رکوردهای کاربردی در مدل‌های مختلف.</p></li>
+<li><p><strong>پیکربندی ایمیل خروجی:</strong> تنظیم SMTP برای ارسال پیام‌ها و اعلان‌ها از داخل اودو.</p></li>
+<li><p><strong>ارسال ایمیل با قالب QWeb:</strong> ساخت قالب‌های پویا و استفاده از آن‌ها در توسعه ماژول‌ها.</p></li>
+<li><p><strong>Chatter:</strong> مدیریت گفت‌وگوها، یادداشت‌ها، دنبال‌کنندگان و تاریخچه ارتباطات روی رکوردها.</p></li>
+<li><p><strong>Activity:</strong> زمان‌بندی پیگیری‌ها و وظایف مرتبط با فرآیندهای کاری.</p></li>
+<li><p><strong>Periodic Digest Emails:</strong> ارسال گزارش‌ها و خلاصه‌های دوره‌ای برای مدیران و اعضای تیم.</p></li>
+</ul>
+<p>اگر این فصل را به‌ترتیب مطالعه کنید، در پایان نه‌تنها می‌دانید اودو چگونه ایمیل را دریافت و
+ارسال می‌کند، بلکه درک خوبی از این موضوع خواهید داشت که چرا زیرساخت ایمیل در اودو تا این حد
+برای توسعه و سفارشی‌سازی مهم است.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">دیباچه</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">کاربردها</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id3">دیدگاه اودوو به ایمیل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id4">ارسال ایمیل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id5">دریافت ایمیل</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inbound_flow_analysis.html">فرآیند پردازش ایمیل‌های ورودی</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id2">چرا شناخت این جریان مهم است؟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id3">نمای کلی معماری دریافت ایمیل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id4">دو مسیر اصلی ورود ایمیل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id5">تصویر ساده‌شده از کل جریان</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id6">فاز اول: دریافت پیام خام</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#message-dict">فاز دوم: نرمال‌سازی پیام و ساخت <code class="docutils literal notranslate"><span class="pre">message_dict</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id8">فاز سوم: کنترل‌های اولیه قبل از مسیریابی</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id10">فاز چهارم: مسیریابی پیام</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id13">فاز پنجم: اعتبارسنجی مسیر و کنترل امنیت</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id15">فاز ششم: اجرای route و ثبت پیام</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#message-new-message-update">رفتار پیش‌فرض <code class="docutils literal notranslate"><span class="pre">message_new</span></code> و <code class="docutils literal notranslate"><span class="pre">message_update</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id16">یک مثال ذهنی ساده</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id17">اگر بخواهید این جریان را دیباگ کنید</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id18">نکات مهم برای توسعه‌دهندگان</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inbound_flow_analysis.html#id19">جمع‌بندی</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="incoming-email-configuration.html">پیکربندی ایمیل ورودی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id1">Email Alias چیست؟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id2">چطور کار می‌کند؟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id3">راه‌اندازی Email Alias در اودو ۱۸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id5">زمان‌بندی واکشی ایمیل</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="outgoing-email-configuration.html">پیکربندی ایمیل خروجی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#xml">ساخت قالب ایمیل با XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#id1">توضیح فیلدهای قالب</a></li>
+<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#id2">مشاهده قالب‌های ایمیل</a></li>
+<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#python">ارسال ایمیل با استفاده از کد Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="chatter.html">Chatter — ابزار ارتباطی درون اودو</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="chatter.html#send-message">ارسال پیام (Send Message)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chatter.html#log-note">یادداشت داخلی (Log Note)</a></li>
@@ -766,20 +854,6 @@
 <li class="toctree-l1"><a class="reference internal" href="activity.html">فعالیت‌ها (Activity)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="activity.html#id1">فعالیت‌ها از نماهای مختلف برنامه‌ریزی می‌شوند</a></li>
 <li class="toctree-l2"><a class="reference internal" href="activity.html#id2">سفارشی‌سازی انواع فعالیت</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="send-emails-using-qweb-template.html">ارسال ایمیل با قالب QWeb</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#xml">ساخت قالب ایمیل با XML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#id1">توضیح فیلدهای قالب</a></li>
-<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#id2">مشاهده قالب‌های ایمیل</a></li>
-<li class="toctree-l2"><a class="reference internal" href="send-emails-using-qweb-template.html#python">ارسال ایمیل با استفاده از کد Python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="email-alias.html">نام مستعار ایمیل (Email Alias)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id1">Email Alias چیست؟</a></li>
-<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id2">چطور کار می‌کند؟</a></li>
-<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id3">راه‌اندازی Email Alias در اودو ۱۸</a></li>
-<li class="toctree-l2"><a class="reference internal" href="email-alias.html#id5">زمان‌بندی واکشی ایمیل</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="periodic-digest-emails.html">ایمیل‌های خلاصه دوره‌ای (Periodic Digest Emails)</a><ul>
@@ -814,11 +888,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="incoming-email-configuration.html"
+       href="introduction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">بعدی</p>
-        <p class="prev-next-title">پیکربندی ایمیل ورودی</p>
+        <p class="prev-next-title">دیباچه</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
