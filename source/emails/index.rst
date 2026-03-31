@@ -12,13 +12,32 @@
 - **Email Alias:** تبدیل خودکار ایمیل‌های دریافتی به رکورد در پایگاه داده اودو.
 - **ایمیل‌های دوره‌ای (Digest Emails):** ارسال خلاصه‌های آماری منظم به اعضای تیم.
 
+کار با ایمیل‌ها رو به سه بخش تقسیم کردم. 
+
+بخش اول پردازش ایمیل‌های ورودی است.
+
+بخش دوم ارسال ایمیل است.
+
+درنهایت در بخش سوم تمام کارهبردهای جانبی را توضیح داده‌ام.
+
+
 .. toctree::
 	:maxdepth: 2
 
+    inbound_flow_analysis
 	incoming-email-configuration
+	email-alias
+
+.. toctree::
+	:maxdepth: 2
+
 	outgoing-email-configuration
+	send-emails-using-qweb-template
+
+
+.. toctree::
+	:maxdepth: 2
+
 	chatter
 	activity
-	send-emails-using-qweb-template
-	email-alias
 	periodic-digest-emails
